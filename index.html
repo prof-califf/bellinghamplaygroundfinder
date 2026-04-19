@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Bellingham for Kids — Find Your Next Adventure</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:#FFFDF8;color:#2C2C2A;}
+
+/* NAV */
+nav{background:#fff;border-bottom:3px solid #FAC775;padding:0 1.5rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-icon{width:38px;height:38px;background:#FAC775;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.logo-icon svg{width:22px;height:22px;}
+.logo-text{font-size:19px;font-weight:900;color:#E24B4A;letter-spacing:-0.3px;}
+.logo-text span{color:#378ADD;}
+.nav-links{display:flex;gap:4px;}
+.nav-links a{font-size:13px;font-weight:800;color:#5F5E5A;text-decoration:none;padding:6px 12px;border-radius:20px;}
+.nav-links a:hover{background:#E6F1FB;color:#185FA5;}
+.nav-links a.active{background:#E24B4A;color:#fff;}
+
+/* HERO */
+.hero{background:#E6F1FB;padding:3.5rem 1.5rem 2.5rem;text-align:center;border-bottom:3px dashed #B5D4F4;position:relative;overflow:hidden;}
+.hero-bg-circles{position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;}
+.hero-circle{position:absolute;border-radius:50%;opacity:0.18;}
+.hero-eyebrow{font-size:13px;font-weight:800;color:#185FA5;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:12px;}
+.hero-title{font-size:clamp(36px,7vw,64px);font-weight:900;color:#E24B4A;line-height:1.05;margin-bottom:10px;}
+.hero-title span{color:#378ADD;}
+.hero-title em{color:#639922;font-style:normal;}
+.hero-sub{font-size:16px;font-weight:700;color:#185FA5;margin-bottom:2rem;max-width:480px;margin-left:auto;margin-right:auto;}
+.crayon-row{display:flex;justify-content:center;gap:6px;margin-bottom:2rem;}
+.crayon{width:13px;height:50px;border-radius:3px 3px 5px 5px;position:relative;animation:crayon-bob 2s ease-in-out infinite;}
+.crayon::after{content:'';position:absolute;bottom:-7px;left:50%;transform:translateX(-50%);width:0;height:0;border-left:6.5px solid transparent;border-right:6.5px solid transparent;border-top:8px solid rgba(0,0,0,0.12);}
+@keyframes crayon-bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-5px);}}
+.crayon:nth-child(1){animation-delay:0s;}
+.crayon:nth-child(2){animation-delay:0.15s;}
+.crayon:nth-child(3){animation-delay:0.3s;}
+.crayon:nth-child(4){animation-delay:0.45s;}
+.crayon:nth-child(5){animation-delay:0.6s;}
+.crayon:nth-child(6){animation-delay:0.75s;}
+
+.search-wrap{max-width:480px;margin:0 auto;}
+.search-bar{background:#fff;border:2.5px solid #FAC775;border-radius:40px;padding:11px 20px;display:flex;align-items:center;gap:10px;}
+.search-bar input{border:none;outline:none;font-size:15px;font-family:'Nunito',sans-serif;font-weight:700;background:transparent;flex:1;color:#2C2C2A;}
+.search-bar input::placeholder{color:#B4B2A9;font-weight:400;}
+.search-btn{background:#E24B4A;border:none;border-radius:30px;padding:6px 16px;font-size:13px;font-weight:800;font-family:'Nunito',sans-serif;color:#fff;cursor:pointer;white-space:nowrap;}
+.search-btn:hover{background:#A32D2D;}
+
+/* STATS BAR */
+.stats-bar{background:#FAC775;padding:0.75rem 1.5rem;display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-size:22px;font-weight:900;color:#412402;}
+.stat-label{font-size:11px;font-weight:800;color:#633806;text-transform:uppercase;letter-spacing:0.05em;}
+
+/* SECTIONS */
+.section{padding:2rem 1.5rem;}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:1.25rem;}
+.section-header h2{font-size:20px;font-weight:900;color:#2C2C2A;}
+.section-header::after{content:'';flex:1;height:2.5px;background:#FAC775;border-radius:2px;}
+
+/* FILTER CHIPS */
+.filter-chips{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:1.5rem;}
+.fchip{font-size:12px;font-weight:800;padding:6px 14px;border-radius:20px;border:2.5px solid;cursor:pointer;font-family:'Nunito',sans-serif;transition:opacity 0.15s;}
+.fchip:not(.active){opacity:0.45;}
+.fchip.active{opacity:1;}
+.chip-pink{background:#FBEAF0;color:#993556;border-color:#ED93B1;}
+.chip-purple{background:#EEEDFE;color:#534AB7;border-color:#AFA9EC;}
+.chip-green{background:#EAF3DE;color:#3B6D11;border-color:#97C459;}
+.chip-blue{background:#E6F1FB;color:#185FA5;border-color:#85B7EB;}
+.chip-yellow{background:#FAEEDA;color:#854F0B;border-color:#FAC775;}
+.chip-red{background:#FCEBEB;color:#A32D2D;border-color:#F09595;}
+
+/* PARK GRID */
+.park-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+.park-card{background:#fff;border:2.5px solid #FAC775;border-radius:16px;overflow:hidden;text-decoration:none;display:block;transition:border-color 0.15s,transform 0.15s;}
+.park-card:hover{border-color:#E24B4A;transform:translateY(-2px);}
+.park-photo{height:140px;display:flex;align-items:flex-end;padding:10px;position:relative;}
+.park-photo-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;}
+.photo-pill{background:rgba(255,255,255,0.92);border-radius:20px;padding:3px 10px;font-size:11px;font-weight:800;color:#2C2C2A;position:relative;z-index:1;}
+.park-body{padding:14px;}
+.park-name{font-size:17px;font-weight:900;color:#2C2C2A;margin-bottom:1px;}
+.park-area{font-size:12px;font-weight:700;color:#888780;margin-bottom:8px;}
+.park-stars{display:flex;align-items:center;gap:6px;margin-bottom:10px;}
+.stars-display{color:#EF9F27;font-size:14px;letter-spacing:1px;}
+.rating-num{font-size:13px;font-weight:800;color:#2C2C2A;}
+.rating-cnt{font-size:12px;color:#888780;font-weight:700;}
+.park-badges{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px;}
+.pbadge{font-size:10px;font-weight:800;padding:3px 8px;border-radius:10px;}
+.explore-btn{display:block;width:100%;text-align:center;font-size:13px;font-weight:800;font-family:'Nunito',sans-serif;padding:8px;border-radius:10px;border:2.5px solid #E24B4A;background:#fff;color:#E24B4A;cursor:pointer;text-decoration:none;transition:background 0.15s,color 0.15s;}
+.explore-btn:hover{background:#E24B4A;color:#fff;}
+
+/* NO RESULTS */
+.no-results{text-align:center;padding:3rem;color:#888780;font-weight:700;font-size:15px;display:none;}
+
+/* FEATURE STRIP */
+.feature-strip{background:#EEEDFE;border-top:3px dashed #AFA9EC;border-bottom:3px dashed #AFA9EC;padding:2rem 1.5rem;}
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1rem;max-width:800px;margin:0 auto;}
+.feature-item{text-align:center;padding:1rem;}
+.feature-icon{width:48px;height:48px;border-radius:50%;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:22px;}
+.feature-title{font-size:14px;font-weight:900;color:#3C3489;margin-bottom:4px;}
+.feature-desc{font-size:12px;font-weight:700;color:#534AB7;line-height:1.5;}
+
+/* FOOTER */
+footer{background:#E6F1FB;border-top:3px solid #FAC775;padding:2rem 1.5rem;text-align:center;}
+.footer-logo{font-size:20px;font-weight:900;color:#E24B4A;margin-bottom:4px;}
+.footer-logo span{color:#378ADD;}
+.footer-tagline{font-size:13px;font-weight:700;color:#185FA5;margin-bottom:1rem;}
+.footer-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+.footer-links a{font-size:12px;font-weight:800;color:#5F5E5A;text-decoration:none;}
+.footer-links a:hover{color:#E24B4A;}
+.footer-copy{font-size:11px;color:#888780;font-weight:700;margin-top:1rem;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">
+      <svg viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="9" r="4.5" fill="#E24B4A"/>
+        <rect x="4" y="14" width="14" height="3" rx="1.5" fill="#378ADD"/>
+        <rect x="7.5" y="17" width="2.5" height="3.5" rx="1.25" fill="#639922"/>
+        <rect x="12" y="17" width="2.5" height="3.5" rx="1.25" fill="#639922"/>
+      </svg>
+    </div>
+    <div class="logo-text">bellingham<span>forkids</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Playgrounds</a>
+    <a href="#">Parks</a>
+    <a href="#">Events</a>
+    <a href="#">About</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg-circles">
+    <div class="hero-circle" style="width:300px;height:300px;background:#378ADD;top:-100px;left:-80px;"></div>
+    <div class="hero-circle" style="width:200px;height:200px;background:#E24B4A;bottom:-60px;right:-40px;"></div>
+    <div class="hero-circle" style="width:150px;height:150px;background:#EF9F27;top:20px;right:15%;"></div>
+  </div>
+  <div style="position:relative;z-index:1;">
+    <div class="hero-eyebrow">Whatcom County's playground guide</div>
+    <div class="hero-title">Find your next<br><span>adventure</span> <em>outside!</em></div>
+    <div class="hero-sub">Playgrounds rated by Bellingham families — find swings, shade, monkey bars, and more.</div>
+    <div class="crayon-row">
+      <div class="crayon" style="background:#E24B4A;"></div>
+      <div class="crayon" style="background:#378ADD;"></div>
+      <div class="crayon" style="background:#639922;"></div>
+      <div class="crayon" style="background:#EF9F27;"></div>
+      <div class="crayon" style="background:#7F77DD;"></div>
+      <div class="crayon" style="background:#D4537E;"></div>
+    </div>
+    <div class="search-wrap">
+      <div class="search-bar">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="7.5" cy="7.5" r="5" stroke="#EF9F27" stroke-width="2.2"/><path d="M11.5 11.5L15.5 15.5" stroke="#EF9F27" stroke-width="2.2" stroke-linecap="round"/></svg>
+        <input type="text" id="search-input" placeholder="Search parks, features, areas..."/>
+        <button class="search-btn">Search</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">13</div><div class="stat-label">Parks listed</div></div>
+  <div class="stat"><div class="stat-num">6</div><div class="stat-label">Full park pages</div></div>
+  <div class="stat"><div class="stat-num">340+</div><div class="stat-label">Community ratings</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Family tested</div></div>
+</div>
+
+<div class="section">
+  <div class="section-header"><h2>Filter by what you need</h2></div>
+  <div class="filter-chips">
+    <span class="fchip chip-pink active" data-f="Baby swings">Baby swings</span>
+    <span class="fchip chip-pink active" data-f="Kid swings">Kid swings</span>
+    <span class="fchip chip-purple active" data-f="Monkey bars">Monkey bars</span>
+    <span class="fchip chip-green active" data-f="Shade">Shade</span>
+    <span class="fchip chip-blue active" data-f="Spray park">Spray park</span>
+    <span class="fchip chip-yellow active" data-f="Restrooms">Restrooms</span>
+    <span class="fchip chip-red active" data-f="Dog friendly">Dog friendly</span>
+    <span class="fchip chip-blue active" data-f="Beach access">Beach access</span>
+  </div>
+
+  <div class="section-header"><h2>Playgrounds</h2></div>
+  <div class="park-grid" id="park-grid"></div>
+  <div class="no-results" id="no-results">No playgrounds match — try adjusting your filters!</div>
+</div>
+
+<div class="feature-strip">
+  <div class="section-header" style="margin-bottom:1.5rem;"><h2 style="color:#3C3489;">Why Bellingham for Kids?</h2></div>
+  <div class="feature-grid">
+    <div class="feature-item">
+      <div class="feature-icon" style="background:#FBEAF0;">👶</div>
+      <div class="feature-title">Toddler-friendly</div>
+      <div class="feature-desc">Filter for baby swings, soft surfaces, and gentle equipment</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon" style="background:#EAF3DE;">🌳</div>
+      <div class="feature-title">Shade-first</div>
+      <div class="feature-desc">Know before you go whether there's cover on hot sunny days</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon" style="background:#E6F1FB;">⭐</div>
+      <div class="feature-title">Family ratings</div>
+      <div class="feature-desc">Rated by real Bellingham parents and kids, not algorithms</div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon" style="background:#FAEEDA;">📸</div>
+      <div class="feature-title">Real photos</div>
+      <div class="feature-desc">See what the playground actually looks like before the drive</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">bellingham<span>forkids</span></div>
+  <div class="footer-tagline">Made by Bellingham families, for Bellingham families 🌲</div>
+  <div class="footer-links">
+    <a href="#">Playgrounds</a>
+    <a href="#">Submit a park</a>
+    <a href="#">About us</a>
+    <a href="#">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 Bellingham for Kids · Whatcom County, WA</div>
+</footer>
+
+<script>
+const parks = [
+  {id:'waypoint', name:'Waypoint Park', area:'Bellingham waterfront', rating:4.8, count:71, color:'#E6F1FB', tcolor:'#185FA5', tags:['Kid swings','Baby swings','Monkey bars','Beach access'], desc:'Brand new waterfront park with modern play equipment and the iconic Acid Ball art installation.'},
+  {id:'million-smiles', name:'Million Smiles Park', area:'Lynden', rating:4.9, count:33, color:'#EAF3DE', tcolor:'#3B6D11', tags:['Kid swings','Baby swings','Monkey bars','Basketball','Tennis'], desc:"Widely known as the 'best playground ever' in Whatcom County. Exceptional equipment for all ages."},
+  {id:'cornwall', name:'Cornwall Park', area:'Bellingham', rating:4.6, count:61, color:'#FAEEDA', tcolor:'#854F0B', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms'], desc:'70 acres in the heart of Bellingham with two playgrounds, spray park, disc golf, and pickleball.'},
+  {id:'star-park', name:'Star Park', area:'Ferndale', rating:4.5, count:21, color:'#FBEAF0', tcolor:'#993556', tags:['Kid swings','Baby swings','Monkey bars'], desc:'Purpose-built 12,000 sq ft playground with zones for ages 0–5 and ages 5–12.'},
+  {id:'whatcom-falls', name:'Whatcom Falls Park', area:'Bellingham', rating:4.5, count:58, color:'#EEEDFE', tcolor:'#534AB7', tags:['Kid swings','Baby swings','Monkey bars','Shade','Restrooms','Dog friendly'], desc:'Forested park with 3+ miles of trails, stunning waterfalls, and full canopy shade.'},
+  {id:'fairhaven', name:'Fairhaven Park', area:'Bellingham', rating:4.4, count:37, color:'#E1F5EE', tcolor:'#085041', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms'], desc:'Wooded park near Historic Fairhaven Village with a beloved spray park and natural shade.'},
+];
+
+function starsHtml(r){
+  let s='';
+  for(let i=1;i<=5;i++) s+=`<span style="color:${i<=Math.round(r)?'#EF9F27':'#D3D1C7'}">★</span>`;
+  return s;
+}
+function badgeStyle(tag){
+  if(['Kid swings','Baby swings'].includes(tag)) return 'background:#FBEAF0;color:#993556;';
+  if(tag==='Monkey bars') return 'background:#EEEDFE;color:#534AB7;';
+  if(tag==='Shade') return 'background:#EAF3DE;color:#3B6D11;';
+  if(tag==='Spray park') return 'background:#E6F1FB;color:#185FA5;';
+  if(tag==='Dog friendly') return 'background:#FAEEDA;color:#854F0B;';
+  if(tag==='Beach access') return 'background:#E6F1FB;color:#0C447C;';
+  if(tag==='Restrooms') return 'background:#F1EFE8;color:#444441;';
+  return 'background:#F1EFE8;color:#444441;';
+}
+
+let activeFilters = new Set();
+
+function render(){
+  const q = document.getElementById('search-input').value.toLowerCase();
+  const grid = document.getElementById('park-grid');
+  const noRes = document.getElementById('no-results');
+  const filtered = parks.filter(p=>{
+    if(q && !p.name.toLowerCase().includes(q) && !p.area.toLowerCase().includes(q) && !p.tags.some(t=>t.toLowerCase().includes(q))) return false;
+    if(activeFilters.size && ![...activeFilters].every(f=>p.tags.includes(f))) return false;
+    return true;
+  });
+  if(!filtered.length){ grid.innerHTML=''; noRes.style.display='block'; return; }
+  noRes.style.display='none';
+  grid.innerHTML = filtered.map(p=>`
+    <a class="park-card" href="${p.id}.html">
+      <div class="park-photo" style="background:${p.color};">
+        <div class="park-photo-placeholder" style="color:${p.tcolor};">📷 Photos coming soon</div>
+        <span class="photo-pill">${p.area}</span>
+      </div>
+      <div class="park-body">
+        <div class="park-name">${p.name}</div>
+        <div class="park-stars">
+          <span class="stars-display">${starsHtml(p.rating)}</span>
+          <span class="rating-num">${p.rating.toFixed(1)}</span>
+          <span class="rating-cnt">(${p.count} ratings)</span>
+        </div>
+        <div class="park-badges">${p.tags.slice(0,4).map(t=>`<span class="pbadge" style="${badgeStyle(t)}">${t}</span>`).join('')}</div>
+        <span class="explore-btn">Explore this park →</span>
+      </div>
+    </a>
+  `).join('');
+}
+
+document.querySelectorAll('.fchip').forEach(c=>{
+  c.onclick=()=>{
+    const f=c.dataset.f;
+    if(activeFilters.has(f)){activeFilters.delete(f);c.classList.remove('active');}
+    else{activeFilters.add(f);c.classList.add('active');}
+    render();
+  };
+});
+document.getElementById('search-input').oninput=render;
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Star Park — Bellingham for Kids</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:#FFFDF8;color:#2C2C2A;}
+nav{background:#fff;border-bottom:3px solid #FAC775;padding:0 1.5rem;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-icon{width:38px;height:38px;background:#FAC775;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.logo-text{font-size:19px;font-weight:900;color:#E24B4A;letter-spacing:-0.3px;}
+.logo-text span{color:#378ADD;}
+.nav-links{display:flex;gap:4px;}
+.nav-links a{font-size:13px;font-weight:800;color:#5F5E5A;text-decoration:none;padding:6px 12px;border-radius:20px;}
+.nav-links a:hover{background:#E6F1FB;color:#185FA5;}
+.nav-links a.active{background:#E24B4A;color:#fff;}
+.breadcrumb{background:#fff;border-bottom:1.5px solid #FAC775;padding:10px 1.5rem;font-size:12px;font-weight:700;color:#888780;}
+.breadcrumb a{color:#185FA5;text-decoration:none;font-weight:800;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb span{color:#B4B2A9;margin:0 6px;}
+.hero{background:#FBEAF0;padding:2.5rem 1.5rem 2rem;border-bottom:3px dashed #F4C0D1;position:relative;overflow:hidden;}
+.hero-bg{position:absolute;top:-60px;right:-60px;width:250px;height:250px;background:#D4537E;border-radius:50%;opacity:0.12;pointer-events:none;}
+.hero-bg2{position:absolute;bottom:-80px;left:-40px;width:200px;height:200px;background:#D4537E;border-radius:50%;opacity:0.08;pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:800px;}
+.park-eyebrow{font-size:12px;font-weight:800;color:#993556;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:8px;}
+.park-title{font-size:clamp(28px,5vw,44px);font-weight:900;color:#2C2C2A;line-height:1.1;margin-bottom:8px;}
+.park-area{font-size:14px;font-weight:800;color:#993556;margin-bottom:12px;}
+.park-stars-row{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.stars-big{font-size:20px;letter-spacing:2px;}
+.rating-big{font-size:18px;font-weight:900;color:#2C2C2A;}
+.rating-cnt{font-size:13px;font-weight:700;color:#888780;}
+.hero-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;}
+.dbadge{font-size:12px;font-weight:800;padding:5px 12px;border-radius:12px;}
+.hero-address{font-size:13px;font-weight:700;color:#993556;}
+.photo-section{background:#FBEAF0;border-bottom:3px solid #F4C0D1;}
+.photo-main{height:280px;background:#FBEAF0;display:flex;align-items:center;justify-content:center;border-bottom:2px dashed #F4C0D1;}
+.photo-placeholder{text-align:center;}
+.photo-placeholder-icon{font-size:40px;margin-bottom:8px;}
+.photo-placeholder-text{font-size:14px;font-weight:800;color:#993556;}
+.photo-placeholder-sub{font-size:12px;font-weight:700;color:#993556;opacity:0.7;}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;}
+.photo-thumb{height:100px;background:#F4C0D1;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#993556;border:1px solid #FBEAF0;cursor:pointer;}
+.photo-thumb:hover{opacity:0.85;}
+.content{max-width:800px;margin:0 auto;padding:2rem 1.5rem;}
+.content-grid{display:grid;grid-template-columns:1fr 280px;gap:2rem;}
+@media(max-width:640px){.content-grid{grid-template-columns:1fr;}}
+.section-label{font-size:11px;font-weight:900;color:#888780;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:10px;}
+.park-desc{font-size:15px;font-weight:400;color:#444441;line-height:1.75;margin-bottom:2rem;}
+.unique-box{background:#FBEAF0;border:2.5px solid #F4C0D1;border-radius:12px;padding:14px 16px;margin-bottom:2rem;}
+.unique-label{font-size:11px;font-weight:900;color:#993556;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:6px;}
+.unique-text{font-size:14px;font-weight:700;color:#2C2C2A;line-height:1.6;}
+.tips-list{list-style:none;margin-bottom:2rem;}
+.tip-item{font-size:14px;font-weight:700;color:#444441;padding:8px 0 8px 26px;border-bottom:1.5px dashed #FAC775;position:relative;line-height:1.5;}
+.tip-item:last-child{border-bottom:none;}
+.tip-item::before{content:'✓';position:absolute;left:0;color:#D4537E;font-weight:900;font-size:14px;}
+.sidebar-card{background:#fff;border:2.5px solid #FAC775;border-radius:14px;padding:1.25rem;margin-bottom:1rem;}
+.sidebar-title{font-size:14px;font-weight:900;color:#2C2C2A;margin-bottom:12px;}
+.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1.5px dashed #FAC775;}
+.fact-row:last-child{border-bottom:none;}
+.fact-key{font-size:12px;font-weight:800;color:#888780;text-transform:uppercase;letter-spacing:0.04em;}
+.fact-val{font-size:13px;font-weight:800;color:#2C2C2A;}
+.rate-card{background:#FBEAF0;border:2.5px solid #F4C0D1;border-radius:14px;padding:1.25rem;}
+.rate-title{font-size:14px;font-weight:900;color:#2C2C2A;margin-bottom:10px;}
+.rate-stars{display:flex;gap:6px;margin-bottom:10px;}
+.rstar{font-size:28px;color:#D3D1C7;cursor:pointer;background:none;border:none;padding:0;line-height:1;font-family:'Nunito',sans-serif;}
+.rstar.lit{color:#EF9F27;}
+.rate-textarea{width:100%;font-size:13px;font-family:'Nunito',sans-serif;font-weight:700;border:2px solid #F4C0D1;border-radius:10px;padding:10px;background:#fff;resize:vertical;min-height:80px;color:#2C2C2A;}
+.rate-submit{margin-top:10px;width:100%;font-size:14px;font-weight:900;font-family:'Nunito',sans-serif;padding:10px;border-radius:10px;border:none;background:#D4537E;color:#fff;cursor:pointer;}
+.rate-submit:hover{opacity:0.9;}
+.nearby-section{padding:0 1.5rem 2rem;max-width:800px;margin:0 auto;}
+.nearby-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;}
+.nearby-card{background:#fff;border:2.5px solid #FAC775;border-radius:12px;padding:12px 14px;text-decoration:none;display:flex;justify-content:space-between;align-items:center;transition:border-color 0.15s;}
+.nearby-card:hover{border-color:#E24B4A;}
+.nearby-name{font-size:13px;font-weight:800;color:#2C2C2A;}
+.nearby-arrow{font-size:16px;color:#E24B4A;font-weight:900;}
+footer{background:#E6F1FB;border-top:3px solid #FAC775;padding:2rem 1.5rem;text-align:center;}
+.footer-logo{font-size:20px;font-weight:900;color:#E24B4A;margin-bottom:4px;}
+.footer-logo span{color:#378ADD;}
+.footer-tagline{font-size:13px;font-weight:700;color:#185FA5;margin-bottom:1rem;}
+.footer-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;}
+.footer-links a{font-size:12px;font-weight:800;color:#5F5E5A;text-decoration:none;}
+.footer-links a:hover{color:#E24B4A;}
+.footer-copy{font-size:11px;color:#888780;font-weight:700;margin-top:1rem;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <circle cx="11" cy="9" r="4.5" fill="#E24B4A"/>
+        <rect x="4" y="14" width="14" height="3" rx="1.5" fill="#378ADD"/>
+        <rect x="7.5" y="17" width="2.5" height="3.5" rx="1.25" fill="#639922"/>
+        <rect x="12" y="17" width="2.5" height="3.5" rx="1.25" fill="#639922"/>
+      </svg>
+    </div>
+    <div class="logo-text">bellingham<span>forkids</span></div>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Playgrounds</a>
+    <a href="#">Parks</a>
+    <a href="#">Events</a>
+    <a href="#">About</a>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">Playgrounds</a>
+  <span>›</span>
+  Star Park
+</div>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg2"></div>
+  <div class="hero-inner">
+    <div class="park-eyebrow">Ferndale</div>
+    <div class="park-title">Star Park</div>
+    <div class="park-stars-row">
+      <span class="stars-big"><span style="color:#EF9F27">★</span><span style="color:#EF9F27">★</span><span style="color:#EF9F27">★</span><span style="color:#EF9F27">★</span><span style="color:#D3D1C7">★</span></span>
+      <span class="rating-big">4.5</span>
+      <span class="rating-cnt">(21 ratings)</span>
+    </div>
+    <div class="hero-badges"><span class="dbadge" style="background:#FBEAF0;color:#993556;">Kid swings</span> <span class="dbadge" style="background:#FBEAF0;color:#993556;">Baby swings</span> <span class="dbadge" style="background:#EEEDFE;color:#534AB7;">Monkey bars</span> <span class="dbadge" style="background:#FAEEDA;color:#633806;">Picnic tables</span></div>
+    <div class="hero-address">📍 2100 Main St, Ferndale, WA 98248</div>
+  </div>
+</div>
+
+<div class="photo-section">
+  <div class="photo-main">
+    <div class="photo-placeholder">
+      <div class="photo-placeholder-icon">📷</div>
+      <div class="photo-placeholder-text">Photos coming soon!</div>
+      <div class="photo-placeholder-sub">Add yours when you visit</div>
+    </div>
+  </div>
+  <div class="photo-grid">
+    <div class="photo-thumb">+ Add photo</div>
+    <div class="photo-thumb">+ Add photo</div>
+    <div class="photo-thumb">+ Add photo</div>
+  </div>
+</div>
+
+<div class="content">
+  <div class="content-grid">
+    <div class="main-col">
+      <div class="section-label">About this park</div>
+      <p class="park-desc">Purpose-built specifically for kids, Star Park's 12,000 square foot playground is split into two clearly defined zones — one for ages 0–5 and one for ages 5–12. This thoughtful design means toddlers and big kids both get equipment sized just right for them. The best toddler playground in Ferndale by a mile.</p>
+
+      <div class="unique-box">
+        <div class="unique-label">What makes it special</div>
+        <div class="unique-text">Split into two age-specific zones — 0-5 and 5-12. Rare and extremely thoughtful design.</div>
+      </div>
+
+      <div class="section-label">Tips from families</div>
+      <ul class="tips-list">
+        <li class="tip-item">The 0–5 zone has baby swings — confirmed!</li>
+<li class="tip-item">Limited shade so go in the morning or evening in summer</li>
+<li class="tip-item">Combine with a visit to downtown Ferndale nearby</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-col">
+      <div class="sidebar-card">
+        <div class="sidebar-title">Quick facts</div>
+        <div class="fact-row"><span class="fact-key">Best age</span><span class="fact-val">0–12 (two separate zones)</span></div>
+        <div class="fact-row"><span class="fact-key">Parking</span><span class="fact-val">Street parking</span></div>
+        <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">Nearby</span></div>
+        <div class="fact-row"><span class="fact-key">Shade</span><span class="fact-val">Limited</span></div>
+      </div>
+
+      <div class="rate-card">
+        <div class="rate-title">Rate this playground</div>
+        <div class="rate-stars" id="rate-stars">
+          <button class="rstar" data-v="1">★</button>
+          <button class="rstar" data-v="2">★</button>
+          <button class="rstar" data-v="3">★</button>
+          <button class="rstar" data-v="4">★</button>
+          <button class="rstar" data-v="5">★</button>
+        </div>
+        <textarea class="rate-textarea" placeholder="What did the kids love? Baby swings? Monkey bars? Shade?"></textarea>
+        <button class="rate-submit">Submit review</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="nearby-section">
+  <div class="section-label" style="margin-bottom:12px;">Also nearby</div>
+  <div class="nearby-grid"><a href="#.html" class="nearby-card" style="border-color:#F4C0D1"><span class="nearby-name">Hovander Homestead Park</span><span class="nearby-arrow">→</span></a> <a href="million-smiles.html" class="nearby-card" style="border-color:#F4C0D1"><span class="nearby-name">Million Smiles Park</span><span class="nearby-arrow">→</span></a> <a href="cornwall.html" class="nearby-card" style="border-color:#F4C0D1"><span class="nearby-name">Cornwall Park</span><span class="nearby-arrow">→</span></a></div>
+</div>
+
+<footer>
+  <div class="footer-logo">bellingham<span>forkids</span></div>
+  <div class="footer-tagline">Made by Bellingham families, for Bellingham families 🌲</div>
+  <div class="footer-links">
+    <a href="index.html">All Playgrounds</a>
+    <a href="#">Submit a park</a>
+    <a href="#">About us</a>
+  </div>
+  <div class="footer-copy">© 2025 Bellingham for Kids · Whatcom County, WA</div>
+</footer>
+
+<script>
+let sel = 0;
+document.getElementById('rate-stars').onclick = e => {
+  if(e.target.classList.contains('rstar')){
+    sel = parseInt(e.target.dataset.v);
+    document.querySelectorAll('.rstar').forEach(b => b.classList.toggle('lit', parseInt(b.dataset.v) <= sel));
+  }
+};
+document.querySelector('.rate-submit').onclick = () => {
+  if(!sel){ alert('Please pick a star rating first!'); return; }
+  alert('Thanks for rating Star Park! Your review helps other Bellingham families. 🎉');
+};
+</script>
+</body>
+</html>
