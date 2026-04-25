@@ -114,6 +114,81 @@ nav {
   box-shadow: 2px 2px 0 var(--dark);
 }
 
+/* Neighborhoods dropdown */
+.nav-dropdown { position: relative; }
+.nav-dropdown-btn {
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--dark);
+  background: transparent;
+  border: 2.5px solid transparent;
+  padding: 6px 14px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
+.nav-dropdown-btn:hover,
+.nav-dropdown-btn[aria-expanded="true"] {
+  background: var(--yellow);
+  border-color: var(--dark);
+}
+.nav-dropdown-btn .caret {
+  font-size: 9px;
+  transition: transform 0.15s;
+}
+.nav-dropdown-btn[aria-expanded="true"] .caret { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  min-width: 240px;
+  background: #fff;
+  border: 3px solid var(--dark);
+  border-radius: 14px;
+  padding: 8px;
+  box-shadow: 4px 4px 0 var(--dark);
+  z-index: 200;
+  display: none;
+}
+.nav-dropdown-menu.open { display: block; }
+.nav-dropdown-group {
+  padding: 6px 10px;
+}
+.nav-dropdown-group + .nav-dropdown-group {
+  border-top: 2px dashed #eee;
+  margin-top: 4px;
+  padding-top: 10px;
+}
+.nav-dropdown-heading {
+  font-family: 'Boogaloo', cursive;
+  font-size: 14px;
+  color: var(--dark);
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.nav-dropdown-menu a {
+  display: block;
+  font-size: 13px;
+  font-weight: 800;
+  color: #444;
+  text-decoration: none;
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  transition: all 0.12s;
+}
+.nav-dropdown-menu a:hover {
+  background: var(--yellow);
+  border-color: var(--dark);
+  color: var(--dark);
+}
+
 /* HERO MOUNTAIN */
 .hero-mountain { width:100%; margin-bottom:1rem; }
 .hero-mountain svg { display:block; width:100%; }
@@ -688,6 +763,25 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
   <div style="display:flex;align-items:center;gap:10px;">
     <div class="nav-links">
       <a href="index.html" class="active">Playgrounds</a>
+      <div class="nav-dropdown">
+        <button class="nav-dropdown-btn" id="hood-btn" aria-expanded="false" aria-controls="hood-menu" aria-haspopup="true">
+          Neighborhoods <span class="caret">▼</span>
+        </button>
+        <div class="nav-dropdown-menu" id="hood-menu" role="menu" aria-label="Browse by neighborhood">
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-heading">🎡 Cornwall Park</div>
+            <a href="parkview.html" role="menuitem">→ Parkview School Playground</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-heading">🌳 Sunnyland</div>
+            <a href="shadyland.html" role="menuitem">→ Shadyland</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-heading">🌲 Fairhaven</div>
+            <a href="fairhaven.html" role="menuitem">→ Fairhaven Park</a>
+          </div>
+        </div>
+      </div>
       <a href="#">About</a>
     </div>
     <div style="width:1px;height:28px;background:rgba(0,0,0,0.12);border-radius:1px;flex-shrink:0;"></div>
@@ -822,14 +916,9 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
 
 <script>
 const parks = [
-  {id:'waypoint',       name:'Waypoint Park',       area:'Bellingham waterfront', color:'#DDEEFF', emoji:'🌊', tags:['Beach access','Trails','Accessible','Pump track'],                                               desc:'Brand new waterfront park with modern play equipment and the iconic Acid Ball art installation.'},
-  {id:'million-smiles', name:'Million Smiles Park',  area:'Lynden',               color:'#DDFCE6', emoji:'😁', tags:['Kid swings','Baby swings','Monkey bars','Basketball','Tennis','Accessible'],         desc:"Widely known as the 'best playground ever' in Whatcom County. Exceptional equipment for all ages."},
-  {id:'cornwall',       name:'Cornwall Park',         area:'Bellingham',           color:'#FFF3CC', emoji:'🎡', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'70 acres in the heart of Bellingham with two playgrounds, spray park, disc golf, and pickleball.'},
-  {id:'star-park',      name:'Star Park',             area:'Ferndale',             color:'#FFE0EE', emoji:'⭐', tags:['Kid swings','Baby swings','Monkey bars'],                              desc:'Purpose-built 12,000 sq ft playground with zones for ages 0–5 and ages 5–12.'},
-  {id:'whatcom-falls',  name:'Whatcom Falls Park',    area:'Bellingham',           color:'#EDE4FF', emoji:'🌊', tags:['Kid swings','Baby swings','Monkey bars','Shade','Restrooms','Dog friendly','Accessible'], desc:'Forested park with 3+ miles of trails, stunning waterfalls, and full canopy shade.'},
-  {id:'fairhaven',      name:'Fairhaven Park',        area:'Bellingham',           color:'#D6F7E8', emoji:'🌲', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'Wooded park near Historic Fairhaven Village with a beloved spray park and natural shade.'},
-  {id:'parkview',       name:'Parkview School Playground', area:'Cornwall Park neighbourhood', color:'#FFF0E0', emoji:'🏫', tags:['Monkey bars','Sun','Accessible','Basketball'], desc:'Brand new school playground with rope pyramid, racing slide, musical instruments and a massive multi-level climbing structure. Open after school hours, weekends & summer.'},
-  {id:'shadyland',      name:'Shadyland (Sunnyland School)', area:'Sunnyland neighbourhood', color:'#D6F7E8', emoji:'🌳', tags:['Shade','Accessible'], desc:"Locals' nickname for the small, shaded, fully-fenced toddler playground tucked behind Sunnyland Elementary. A summer favorite for parents of littles. Open after school, weekends & summer."},
+  {id:'parkview',  name:'Parkview School Playground', area:'Cornwall Park neighbourhood', neighborhood:'Cornwall Park', color:'#FFF0E0', emoji:'🏫', tags:['Monkey bars','Sun','Accessible','Basketball'], desc:'Brand new school playground with rope pyramid, racing slide, musical instruments and a massive multi-level climbing structure. Open after school hours, weekends & summer.'},
+  {id:'shadyland', name:'Shadyland (Sunnyland School)', area:'Sunnyland neighbourhood', neighborhood:'Sunnyland', color:'#D6F7E8', emoji:'🌳', tags:['Shade','Accessible'], desc:"Locals' nickname for the small, shaded, fully-fenced toddler playground tucked behind Sunnyland Elementary. A summer favorite for parents of littles. Open after school, weekends & summer."},
+  {id:'fairhaven', name:'Fairhaven Park', area:'Fairhaven neighbourhood', neighborhood:'Fairhaven', color:'#D6F7E8', emoji:'🌲', tags:['Kid swings','Baby swings','Monkey bars','Spray park','Shade','Restrooms','Accessible'], desc:'Wooded park near Historic Fairhaven Village with a beloved spray park and natural shade.'},
 ];
 
 const tagEmoji = {
@@ -957,6 +1046,27 @@ function bindToggle(id, cls) {
 bindToggle('toggle-contrast', 'high-contrast');
 bindToggle('toggle-text', 'large-text');
 bindToggle('toggle-motion', 'reduce-motion');
+
+// Neighborhoods dropdown
+const hoodBtn  = document.getElementById('hood-btn');
+const hoodMenu = document.getElementById('hood-menu');
+function toggleHood(open) {
+  hoodMenu.classList.toggle('open', open);
+  hoodBtn.setAttribute('aria-expanded', String(open));
+}
+hoodBtn.addEventListener('click', e => {
+  e.stopPropagation();
+  toggleHood(!hoodMenu.classList.contains('open'));
+});
+document.addEventListener('click', e => {
+  if (!hoodMenu.contains(e.target) && e.target !== hoodBtn) toggleHood(false);
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && hoodMenu.classList.contains('open')) {
+    toggleHood(false);
+    hoodBtn.focus();
+  }
+});
 </script>
 
 </body>
