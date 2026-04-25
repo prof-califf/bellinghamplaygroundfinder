@@ -57,7 +57,7 @@ nav {
   background: #fff;
   border-bottom: 4px solid var(--yellow);
   padding: 0 1.5rem;
-  height: 66px;
+  height: 84px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -135,6 +135,17 @@ nav {
 .nav-dropdown-btn[aria-expanded="true"] {
   background: var(--yellow);
   border-color: var(--dark);
+}
+.nav-dropdown-btn-active {
+  background: var(--red);
+  color: #fff;
+  border-color: var(--dark);
+  box-shadow: 2px 2px 0 var(--dark);
+}
+.nav-dropdown-btn-active:hover {
+  background: var(--red);
+  color: #fff;
+  filter: brightness(1.05);
 }
 .nav-dropdown-btn .caret {
   font-size: 9px;
@@ -762,12 +773,11 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
   </a>
   <div style="display:flex;align-items:center;gap:10px;">
     <div class="nav-links">
-      <a href="index.html" class="active">Playgrounds</a>
       <div class="nav-dropdown">
-        <button class="nav-dropdown-btn" id="hood-btn" aria-expanded="false" aria-controls="hood-menu" aria-haspopup="true">
-          Neighborhoods <span class="caret">▼</span>
+        <button class="nav-dropdown-btn nav-dropdown-btn-active" id="hood-btn" aria-expanded="false" aria-controls="hood-menu" aria-haspopup="true">
+          Playgrounds <span class="caret">▼</span>
         </button>
-        <div class="nav-dropdown-menu" id="hood-menu" role="menu" aria-label="Browse by neighborhood">
+        <div class="nav-dropdown-menu" id="hood-menu" role="menu" aria-label="Browse playgrounds by neighborhood">
           <div class="nav-dropdown-group">
             <div class="nav-dropdown-heading">🎡 Cornwall Park</div>
             <a href="parkview.html" role="menuitem">→ Parkview School Playground</a>
