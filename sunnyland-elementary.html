@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Fairhaven Park — Bellingham Playground Finder</title>
+<title>Sunnyland Elementary School Playground — Bellingham Playground Finder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
@@ -11,7 +11,7 @@
 :root {
   --red:#F2383A; --orange:#FF7A1A; --yellow:#FFD600; --green:#3DBD4A;
   --blue:#2B87E3; --purple:#9B5DE5; --pink:#F15BB5; --cream:#FFFEF5;
-  --dark:#1E1B18; --accent:#3DBD4A; --accent-light:#D6F7E8; --accent-dark:#1B7A3E;
+  --dark:#1E1B18; --accent:#FF7A1A; --accent-light:#FFF0E0; --accent-dark:#8B4000;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--dark);background-image:repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(255,214,0,0.04) 18px,rgba(255,214,0,0.04) 36px);}
@@ -79,11 +79,12 @@ html.reduce-motion *{animation:none!important;transition:none!important;}
 .hero-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;}
 .dbadge{font-size:12px;font-weight:900;padding:5px 13px;border-radius:20px;border:2px solid var(--dark);box-shadow:2px 2px 0 var(--dark);}
 .hero-address{font-size:13px;font-weight:700;color:var(--accent-dark);margin-bottom:1.5rem;}
+.school-badge{position:absolute;top:18px;right:20px;z-index:2;background:#2D5F3F;color:#fff;font-family:'Boogaloo',cursive;padding:10px 18px;border:4px solid #8B5A2B;border-radius:6px;box-shadow:3px 3px 0 var(--dark);text-align:center;line-height:1.05;transform:rotate(-4deg);}
+.school-badge .sb-ico{font-size:22px;display:block;margin-bottom:2px;}
+.school-badge .sb-line{font-size:15px;}
+@media(max-width:560px){.school-badge{top:10px;right:10px;padding:6px 10px;transform:rotate(-3deg);}.school-badge .sb-ico{font-size:14px;margin-bottom:1px;}.school-badge .sb-line{font-size:10px;}.hero-inner{padding-right:90px;}}
 .hero-scene{position:relative;width:100%;height:260px;overflow:hidden;}
 .hero-scene svg{width:100%;height:100%;display:block;}
-.public-badge{position:absolute;top:14px;right:18px;z-index:2;width:130px;height:88px;filter:drop-shadow(2px 2px 0 var(--dark));pointer-events:none;}
-.public-badge svg{width:100%;height:100%;display:block;}
-@media(max-width:560px){.public-badge{width:96px;height:64px;top:10px;right:10px;}.hero-inner{padding-right:108px;}}
 
 
 
@@ -153,12 +154,12 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
           <div class="nav-dropdown-group">
             <div class="nav-dropdown-heading">🌳 Sunnyland</div>
             <a href="sunnyland-park.html" role="menuitem">→ Sunnyland Park</a>
-            <a href="sunnyland-elementary.html" role="menuitem">→ Sunnyland Elementary School</a>
+            <a href="sunnyland-elementary.html" role="menuitem" aria-current="page" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent-dark);">→ Sunnyland Elementary School (you are here)</a>
             <a href="shadyland.html" role="menuitem">→ Shadyland (Behind Sunnyland Elem. School)</a>
           </div>
           <div class="nav-dropdown-group">
             <div class="nav-dropdown-heading">🌲 Fairhaven</div>
-            <a href="fairhaven.html" role="menuitem" aria-current="page" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent-dark);">→ Fairhaven Park (you are here)</a>
+            <a href="fairhaven.html" role="menuitem">→ Fairhaven Park</a>
           </div>
         </div>
       </div>
@@ -189,227 +190,48 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
 <div class="breadcrumb">
   <a href="index.html">← All Playgrounds</a>
   <span>›</span>
-  Fairhaven Park
+  Sunnyland Elementary School
 </div>
 
 <div class="hero">
-  <div class="public-badge" aria-label="Public playground">
-    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <linearGradient id="postPB" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#444"/>
-          <stop offset="35%" stop-color="#7a7a7a"/>
-          <stop offset="65%" stop-color="#686868"/>
-          <stop offset="100%" stop-color="#383838"/>
-        </linearGradient>
-        <linearGradient id="signFacePB" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1e5230"/>
-          <stop offset="100%" stop-color="#133520"/>
-        </linearGradient>
-      </defs>
-      <rect x="38" y="74" width="13" height="40" fill="url(#postPB)" stroke="#222" stroke-width="1.5"/>
-      <rect x="38" y="74" width="2" height="40" fill="#909090" opacity="0.45"/>
-      <rect x="49" y="74" width="2" height="40" fill="#1a1a1a" opacity="0.35"/>
-      <rect x="36" y="80" width="17" height="4" rx="0.5" fill="#FFD600" stroke="#a88800" stroke-width="1"/>
-      <rect x="129" y="74" width="13" height="40" fill="url(#postPB)" stroke="#222" stroke-width="1.5"/>
-      <rect x="129" y="74" width="2" height="40" fill="#909090" opacity="0.45"/>
-      <rect x="140" y="74" width="2" height="40" fill="#1a1a1a" opacity="0.35"/>
-      <rect x="127" y="80" width="17" height="4" rx="0.5" fill="#FFD600" stroke="#a88800" stroke-width="1"/>
-      <rect x="34" y="22" width="116" height="56" rx="3" fill="rgba(0,0,0,0.28)"/>
-      <rect x="31" y="20" width="116" height="56" rx="3" fill="url(#signFacePB)" stroke="#081808" stroke-width="2"/>
-      <text x="89" y="46" font-family="Arial Black, Impact, sans-serif" font-size="13" font-weight="900" fill="#ffffff" letter-spacing="-0.5" text-anchor="middle">Bellingham</text>
-      <text x="89" y="63" font-family="Arial Black, Impact, sans-serif" font-size="9" font-weight="900" fill="#ffffff" letter-spacing="0.3" text-anchor="middle">PUBLIC PARK</text>
-    </svg>
+  <div class="school-badge" aria-label="School playground">
+    <span class="sb-ico">🏫</span>
+    <div class="sb-line">School<br/>Playground</div>
   </div>
   <div class="hero-inner">
-    <div class="park-eyebrow">📍 Bellingham — Historic Fairhaven</div>
-    <div class="park-title">Fairhaven Park</div>
+    <div class="park-eyebrow">📍 Sunnyland Neighbourhood, Bellingham</div>
+    <div class="park-title">Sunnyland Elementary School</div>
+    <div class="park-subtitle">Possibly the biggest school playground in Bellingham 🛝</div>
     <div class="hero-badges">
-      <span class="dbadge" style="background:#FFE0EE;color:#993556;">🤸 Kid swings</span>
-      <span class="dbadge" style="background:#FFE0EE;color:#993556;">👶 Baby swings</span>
+      <span class="dbadge" style="background:#FFF0E0;color:#8B4000;">🛝 Tons of slides</span>
+      <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">🧗 Climbing</span>
       <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">🐒 Monkey bars</span>
-      <span class="dbadge" style="background:#DDEEFF;color:#0C5DB5;">💦 Spray park</span>
-      <span class="dbadge" style="background:#F5F5F5;color:#444;">🚻 Restrooms</span>
-      <span class="dbadge" style="background:#FFE8CC;color:#8B4000;">🐕 Dog friendly</span>
-      <span class="dbadge" style="background:#FFF3CC;color:#7A5800;">🪑 Picnic tables</span>
-      <span class="dbadge" style="background:#D6F7E8;color:#1B7A3E;">🥾 Trails</span>
-      <span class="dbadge" style="background:#D6F7E8;color:#1B7A3E;">🎾 Tennis</span>
-      <span class="dbadge" style="background:#FFF9CC;color:#7A5800;">☀️ Sun</span>
+      <span class="dbadge" style="background:#FFE0EE;color:#993556;">🤸 Kid swings</span>
+      <span class="dbadge" style="background:#FFF0E0;color:#8B4000;">🏀 Basketball</span>
+      <span class="dbadge" style="background:#D6F7E8;color:#1B7A3E;">⚽ Soccer field</span>
       <span class="dbadge" style="background:#1E1B18;color:#FFD600;">♿ Accessible</span>
     </div>
-    <div class="hero-address">📍 107 Chuckanut Dr N, Bellingham, WA 98225</div>
+    <div class="hero-address">📍 2800 James St, Bellingham, WA 98225</div>
   </div>
 
-  <!-- PARK SIGN + MOUNTAIN SCENE — Harriet Spanel style -->
-  <div class="hero-scene" aria-hidden="true">
-    <svg viewBox="0 0 1440 260" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+  <div class="hero-mountain" aria-hidden="true">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:80px;">
       <defs>
-        <linearGradient id="skyFH" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#a8d8f0"/>
-          <stop offset="100%" stop-color="#c8f0da"/>
-        </linearGradient>
-        <linearGradient id="snowFH" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#fff"/>
-          <stop offset="100%" stop-color="#ddf0f8"/>
-        </linearGradient>
-        <linearGradient id="postMetal" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0%" stop-color="#444"/>
-          <stop offset="35%" stop-color="#7a7a7a"/>
-          <stop offset="65%" stop-color="#686868"/>
-          <stop offset="100%" stop-color="#383838"/>
-        </linearGradient>
-        <linearGradient id="signFace" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#1e5230"/>
-          <stop offset="100%" stop-color="#133520"/>
-        </linearGradient>
-        <linearGradient id="concrete" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#c0bdb8"/>
-          <stop offset="100%" stop-color="#a0ada0"/>
+        <linearGradient id="snowG2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="100%" stop-color="#dff0f8"/>
         </linearGradient>
       </defs>
-
-      <!-- Sky -->
-      <rect width="1440" height="260" fill="url(#skyFH)"/>
-
-      <!-- Clouds -->
-      <ellipse cx="175" cy="44" rx="65" ry="24" fill="#fff" opacity="0.72"/>
-      <ellipse cx="222" cy="34" rx="48" ry="19" fill="#fff" opacity="0.65"/>
-      <ellipse cx="135" cy="42" rx="40" ry="17" fill="#fff" opacity="0.6"/>
-      <ellipse cx="1090" cy="38" rx="60" ry="22" fill="#fff" opacity="0.68"/>
-      <ellipse cx="1135" cy="27" rx="44" ry="17" fill="#fff" opacity="0.6"/>
-      <ellipse cx="615" cy="28" rx="50" ry="18" fill="#fff" opacity="0.5"/>
-
-      <!-- Far mountains -->
-      <path d="M0 260 L130 130 L270 165 L410 90 L550 152 L680 72 L820 140 L960 84 L1100 135 L1240 92 L1440 130 L1440 260 Z" fill="#a8c8de" opacity="0.5"/>
-      <!-- Mid mountains -->
-      <path d="M0 260 L95 160 L210 185 L325 125 L455 175 L575 105 L700 165 L825 115 L950 178 L1070 118 L1190 168 L1320 130 L1440 155 L1440 260 Z" fill="#5a98b5" opacity="0.7"/>
-      <!-- Front mountains -->
-      <path d="M0 260 L75 188 L165 208 L248 162 L345 204 L448 128 L538 182 L628 160 L742 212 L838 150 L932 195 L1024 160 L1122 206 L1212 142 L1312 188 L1440 164 L1440 260 Z" fill="#2e6a84"/>
-      <!-- Snow caps -->
-      <path d="M448 128 L435 145 L461 145 Z" fill="url(#snowFH)" opacity="0.95"/>
-      <path d="M838 150 L826 165 L850 165 Z" fill="url(#snowFH)" opacity="0.9"/>
-      <path d="M1212 142 L1201 156 L1223 156 Z" fill="url(#snowFH)" opacity="0.9"/>
-      <path d="M680 72 L669 87 L691 87 Z" fill="url(#snowFH)" opacity="0.9"/>
-
-      <!-- Grass -->
-      <rect x="0" y="240" width="1440" height="20" fill="#286838"/>
-      <rect x="0" y="247" width="1440" height="13" fill="#329044"/>
-
-      <!-- LEFT evergreen trees -->
-      <rect x="38" y="210" width="8" height="32" fill="#3a2408"/>
-      <polygon points="42,158 22,212 62,212" fill="#123820"/>
-      <polygon points="42,143 24,170 60,170" fill="#186830"/>
-      <polygon points="42,130 26,153 58,153" fill="#1e7838"/>
-      <rect x="82" y="215" width="7" height="27" fill="#3a2408"/>
-      <polygon points="86,172 68,216 104,216" fill="#123820"/>
-      <polygon points="86,160 70,180 102,180" fill="#186830"/>
-      <rect x="125" y="210" width="8" height="32" fill="#3a2408"/>
-      <polygon points="129,156 108,212 150,212" fill="#123820"/>
-      <polygon points="129,142 110,168 148,168" fill="#186830"/>
-      <polygon points="129,130 112,150 146,150" fill="#1e7838"/>
-      <ellipse cx="85" cy="242" rx="50" ry="10" fill="#1e5828"/>
-
-      <!-- RIGHT evergreen trees -->
-      <rect x="1300" y="210" width="8" height="32" fill="#3a2408"/>
-      <polygon points="1304,156 1283,212 1325,212" fill="#123820"/>
-      <polygon points="1304,142 1285,168 1323,168" fill="#186830"/>
-      <polygon points="1304,130 1287,150 1321,150" fill="#1e7838"/>
-      <rect x="1345" y="215" width="7" height="27" fill="#3a2408"/>
-      <polygon points="1349,172 1331,216 1367,216" fill="#123820"/>
-      <polygon points="1349,160 1333,180 1365,180" fill="#186830"/>
-      <rect x="1388" y="210" width="8" height="32" fill="#3a2408"/>
-      <polygon points="1392,158 1371,212 1413,212" fill="#123820"/>
-      <polygon points="1392,144 1373,170 1411,170" fill="#186830"/>
-      <ellipse cx="1360" cy="242" rx="50" ry="10" fill="#1e5828"/>
-
-      <!-- Mid scattered trees -->
-      <rect x="290" y="218" width="6" height="24" fill="#3a2408"/>
-      <polygon points="293,184 281,219 305,219" fill="#123820"/>
-      <polygon points="293,173 282,190 304,190" fill="#186830"/>
-      <rect x="1145" y="216" width="6" height="26" fill="#3a2408"/>
-      <polygon points="1148,180 1136,217 1160,217" fill="#123820"/>
-      <polygon points="1148,170 1137,187 1159,187" fill="#186830"/>
-
-      <!-- ================================== -->
-      <!-- HARRIET SPANEL STYLE SIGN          -->
-      <!-- Square steel posts, yellow bands,  -->
-      <!-- wide board, left-aligned bold text  -->
-      <!-- ================================== -->
-
-      <!-- Concrete slab -->
-      <rect x="370" y="234" width="700" height="20" rx="3" fill="url(#concrete)" stroke="#8a8880" stroke-width="1.5"/>
-      <line x1="376" y1="240" x2="1064" y2="240" stroke="#b8b5b0" stroke-width="0.8" opacity="0.5"/>
-      <line x1="376" y1="246" x2="1064" y2="246" stroke="#b0ada8" stroke-width="0.6" opacity="0.4"/>
-
-      <!-- Base flanges -->
-      <rect x="402" y="229" width="40" height="12" rx="2" fill="#585858" stroke="#2a2a2a" stroke-width="1.2"/>
-      <rect x="998" y="229" width="40" height="12" rx="2" fill="#585858" stroke="#2a2a2a" stroke-width="1.2"/>
-      <circle cx="412" cy="235" r="3" fill="#2a2a2a"/>
-      <circle cx="432" cy="235" r="3" fill="#2a2a2a"/>
-      <circle cx="1008" cy="235" r="3" fill="#2a2a2a"/>
-      <circle cx="1028" cy="235" r="3" fill="#2a2a2a"/>
-
-      <!-- LEFT steel post -->
-      <rect x="404" y="105" width="38" height="128" fill="url(#postMetal)" stroke="#222" stroke-width="2"/>
-      <rect x="404" y="105" width="5" height="128" fill="#909090" opacity="0.45"/>
-      <rect x="437" y="105" width="5" height="128" fill="#1a1a1a" opacity="0.35"/>
-      <!-- Yellow bands -->
-      <rect x="401" y="112" width="44" height="11" rx="1" fill="#FFD600" stroke="#a88800" stroke-width="1.5"/>
-      <rect x="401" y="127" width="44" height="11" rx="1" fill="#FFD600" stroke="#a88800" stroke-width="1.5"/>
-
-      <!-- RIGHT steel post -->
-      <rect x="998" y="105" width="38" height="128" fill="url(#postMetal)" stroke="#222" stroke-width="2"/>
-      <rect x="998" y="105" width="5" height="128" fill="#909090" opacity="0.45"/>
-      <rect x="1031" y="105" width="5" height="128" fill="#1a1a1a" opacity="0.35"/>
-      <!-- Yellow bands -->
-      <rect x="995" y="112" width="44" height="11" rx="1" fill="#FFD600" stroke="#a88800" stroke-width="1.5"/>
-      <rect x="995" y="127" width="44" height="11" rx="1" fill="#FFD600" stroke="#a88800" stroke-width="1.5"/>
-
-      <!-- Sign drop shadow -->
-      <rect x="445" y="109" width="552" height="130" rx="4" fill="rgba(0,0,0,0.28)"/>
-
-      <!-- Sign face — wide landscape board -->
-      <rect x="441" y="105" width="554" height="128" rx="4" fill="url(#signFace)" stroke="#081808" stroke-width="3"/>
-
-      <!-- Subtle horizontal grain -->
-      <line x1="446" y1="120" x2="988" y2="120" stroke="#0a2010" stroke-width="0.5" opacity="0.14"/>
-      <line x1="446" y1="140" x2="988" y2="140" stroke="#0a2010" stroke-width="0.5" opacity="0.11"/>
-      <line x1="446" y1="160" x2="988" y2="160" stroke="#0a2010" stroke-width="0.5" opacity="0.11"/>
-      <line x1="446" y1="180" x2="988" y2="180" stroke="#0a2010" stroke-width="0.5" opacity="0.11"/>
-      <line x1="446" y1="200" x2="988" y2="200" stroke="#0a2010" stroke-width="0.5" opacity="0.11"/>
-      <line x1="446" y1="220" x2="988" y2="220" stroke="#0a2010" stroke-width="0.5" opacity="0.14"/>
-
-      <!-- MAIN TEXT — large bold left-aligned, like Harriet Spanel -->
-      <text x="468" y="165" font-family="Arial Black, Impact, sans-serif" font-size="50" font-weight="900"
-            fill="#ffffff" letter-spacing="-1">Fairhaven</text>
-      <text x="468" y="213" font-family="Arial Black, Impact, sans-serif" font-size="44" font-weight="900"
-            fill="#ffffff" letter-spacing="-1">Park</text>
-
-      <!-- Address — bottom left, small -->
-      <text x="468" y="226" font-family="Arial, sans-serif" font-size="9" fill="#80b898" letter-spacing="0.5">107 CHUCKANUT DR N  ·  CITY OF BELLINGHAM  ·  PARKS AND RECREATION DEPARTMENT</text>
-
-      <!-- Bellingham Parks seal — bottom RIGHT (just like Harriet Spanel photo) -->
-      <circle cx="950" cy="185" r="30" fill="#163c22" stroke="#2e6840" stroke-width="2"/>
-      <circle cx="950" cy="185" r="25" fill="none" stroke="#3a7848" stroke-width="1"/>
-      <!-- Trees in seal -->
-      <polygon points="950,163 943,180 957,180" fill="#fff" opacity="0.92"/>
-      <rect x="948" y="180" width="4" height="6" fill="#fff" opacity="0.85"/>
-      <polygon points="936,166 930,180 942,180" fill="#fff" opacity="0.82"/>
-      <rect x="934" y="180" width="4" height="5" fill="#fff" opacity="0.75"/>
-      <polygon points="964,166 958,180 970,180" fill="#fff" opacity="0.82"/>
-      <rect x="962" y="180" width="4" height="5" fill="#fff" opacity="0.75"/>
-      <line x1="928" y1="186" x2="972" y2="186" stroke="#fff" stroke-width="1.5" opacity="0.7"/>
-      <!-- Seal text -->
-      <text x="950" y="161" font-family="Arial, sans-serif" font-size="6.5" fill="#b0d8c0"
-            text-anchor="middle" letter-spacing="1.2" opacity="0.9">BELLINGHAM</text>
-      <text x="950" y="210" font-family="Arial, sans-serif" font-size="5.5" fill="#b0d8c0"
-            text-anchor="middle" letter-spacing="0.8" opacity="0.85">PARKS AND RECREATION</text>
-
-      <!-- Ground border -->
-      <rect x="0" y="256" width="1440" height="4" fill="#1E1B18"/>
+      <rect width="1440" height="90" fill="#FFF9CC"/>
+      <path d="M0 90 L120 55 L240 70 L360 30 L480 65 L600 20 L720 58 L840 28 L960 62 L1080 18 L1200 52 L1320 35 L1440 50 L1440 90 Z" fill="#c2dce8" opacity="0.5"/>
+      <path d="M0 90 L90 65 L200 80 L310 42 L430 72 L550 28 L660 65 L770 38 L890 75 L1000 32 L1110 68 L1230 46 L1350 70 L1440 52 L1440 90 Z" fill="#8ab8cc" opacity="0.6"/>
+      <path d="M0 90 L100 60 L180 82 L260 45 L350 80 L450 28 L530 68 L620 48 L720 85 L800 35 L900 72 L980 42 L1080 78 L1160 30 L1260 65 L1360 48 L1440 62 L1440 90 Z" fill="#4a8fa8"/>
+      <path d="M450 28 L438 42 L462 42 Z" fill="url(#snowG2)" opacity="0.95"/>
+      <path d="M800 35 L788 48 L812 48 Z" fill="url(#snowG2)" opacity="0.95"/>
+      <path d="M1160 30 L1149 43 L1171 43 Z" fill="url(#snowG2)" opacity="0.9"/>
+      <rect x="0" y="87" width="1440" height="3" fill="#1E1B18"/>
     </svg>
   </div>
-</div>
 
       
       
@@ -425,52 +247,55 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
   <div class="content-grid">
     <div class="main-col">
       <div class="section-label">🌳 About this park</div>
-      <p class="park-desc">A well-loved 136-acre community park tucked into the wooded hills near Historic Fairhaven Village. Fairhaven has a fantastic playground with racing slides, baby and kid swings, monkey bars, and Bellingham's most unique climbing structure — a challenging gap-climb you won't find anywhere else in the city. The spray park runs June 15–September 15 (11am–7pm daily) and uses fresh potable water. Beyond the playground there's a labyrinth, multipurpose fields, tennis courts, barbecue grills, and picnic spots. Head into the forested trails to find a small waterfall, access to the 100 Acre Woods Trail and the Interurban Trail — and Fairhaven Village is only about 0.6 miles away for coffee or a bite.</p>
+      <p class="park-desc">Possibly the biggest school playground in Bellingham. Sunnyland Elementary's playground is a newish, sprawling space packed with stuff to do — tons of different slides, lots of climbing features, funky monkey bars, kid swings (with some lower ones for the younger crowd), and basketball hoops both covered and out in the open. There's a small astroturf soccer field right next to the playground, and Memorial Park's grassy fields and trails are just behind the school. It's a school playground so access is limited — open after school hours weekdays, all day weekends, holidays, and summer. The whole playground is mostly fenced and accessible with a rubber safety surface throughout.</p>
 
       <div class="unique-box">
         <div class="unique-label">✨ What makes it special</div>
-        <div class="unique-text">The one-of-a-kind climbing structure with gaps to climb across — no other Bellingham park has anything like it. Plus access to the Interurban Trail, a hidden waterfall on the nearby trails, and Fairhaven Village just 0.6 miles away. Also has an indoor rentable party space and an upper pavilion — great for birthdays! </div>
+        <div class="unique-text">Just the sheer <strong>scale</strong> of this playground. There's so much to climb, slide, and swing on that elementary-aged kids could spend a whole afternoon and not run out of things to try. Bonus: with Shadyland for toddlers tucked in the back AND Memorial Park's open grassy fields right behind the school, you've got something for every size kid.</div>
+      </div>
+
+      <div style="background:#FFF9CC;border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);">
+        <div style="font-family:'Boogaloo',cursive;font-size:16px;color:#7A5800;margin-bottom:6px;">🛝 Bonus: a two-playground destination!</div>
+        <div style="font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;">Sunnyland Elementary's main playground (you're here) is the big-kid spot. Behind the school is <strong><a href="shadyland.html" style="color:var(--accent-dark);text-decoration:underline;">Shadyland</a></strong>, a small toddler-friendly playground that's mostly in the shade. <strong>Memorial Park</strong> is right back there too — no playground, but big grassy fields and a walking trail for when kids need to run.</div>
+      </div>
+
+      <div style="background:#FFF9CC;border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);">
+        <div style="font-family:'Boogaloo',cursive;font-size:16px;color:#7A5800;margin-bottom:6px;">⭐ 5-year-old review</div>
+        <div style="font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;">"So many things to do — low swings for younger kids!" 🤸</div>
       </div>
 
       <div class="section-label">💡 Tips from families</div>
       <ul class="tips-list">
-        <li class="tip-item">Spray park is open June 15 – Sept 15, 11am–7pm daily — bring a change of clothes!</li>
-        <li class="tip-item">The climbing structure has gaps — great for adventurous kids, worth supervising little ones</li>
-        <li class="tip-item">Playground has limited shade — go in the morning or bring sunscreen in summer</li>
-        <li class="tip-item">Walk the forested trails behind the park to find a small hidden waterfall 🌊</li>
-        <li class="tip-item">Fairhaven Village is ~0.6 miles away — Cafe Blue has great coffee & cookies, Iron Rooster is also excellent</li>
-        <li class="tip-item">Dogs love the big grassy areas — plenty of room to run off leash in the open fields</li>
-        <li class="tip-item">Toddler equipment is connected to the bigger kid structures — medium toddler-friendliness overall</li>
-        <li class="tip-item">Has an indoor rentable party space and an upper pavilion — great for birthday parties 🎉</li>
-        <li class="tip-item">Don't miss the labyrinth — a fun and peaceful surprise tucked in the park</li>
-        <li class="tip-item">Bring charcoal — there are BBQ grills available throughout the park</li>
+        <li class="tip-item">This is a school playground — open after school hours, weekends, holidays, and summer</li>
+        <li class="tip-item">Gets very hot in the afternoon with no shade — best in the morning or evening in summer</li>
+        <li class="tip-item">Bring water — there's nowhere to refill nearby</li>
+        <li class="tip-item">Lots of bigger-kid equipment, so watch your littles around the higher stuff</li>
+        <li class="tip-item">Got toddlers too? Walk around behind the school to <strong>Shadyland</strong> — it's fully fenced and shaded</li>
+        <li class="tip-item">No restrooms on site — Trader Joe's shopping center is the nearest option</li>
+        <li class="tip-item">Memorial Park's fields and trails are right behind the school — great for a run-around break</li>
+        <li class="tip-item">There are some lower swings perfect for younger kids who want to swing with the bigger ones</li>
       </ul>
     </div>
 
     <div class="sidebar-col">
       <div class="sidebar-card">
         <div class="sidebar-title">📋 Quick facts</div>
-        <div class="fact-row"><span class="fact-key">Best age</span><span class="fact-val">2–10</span></div>
-        <div class="fact-row"><span class="fact-key">Parking</span><span class="fact-val">Free — lots of spaces</span></div>
-        <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">Yes — clean</span></div>
-        <div class="fact-row"><span class="fact-key">Shade</span><span class="fact-val">None on playground; forested trails nearby</span></div>
-        <div class="fact-row"><span class="fact-key">Fencing</span><span class="fact-val">None</span></div>
-        <div class="fact-row"><span class="fact-key">Surface</span><span class="fact-val">Wood chips</span></div>
-        <div class="fact-row"><span class="fact-key">Benches</span><span class="fact-val">Yes</span></div>
-        <div class="fact-row"><span class="fact-key">Picnic tables</span><span class="fact-val">Yes</span></div>
-        <div class="fact-row"><span class="fact-key">Dogs</span><span class="fact-val">Yes — lots of grassy space</span></div>
-        <div class="fact-row"><span class="fact-key">Spray park</span><span class="fact-val">June 15 – Sept 15, 11am–7pm</span></div>
-        <div class="fact-row"><span class="fact-key">Size</span><span class="fact-val">136 acres</span></div>
-        <div class="fact-row"><span class="fact-key">Tennis</span><span class="fact-val">Yes</span></div>
-        <div class="fact-row"><span class="fact-key">BBQ grills</span><span class="fact-val">Yes</span></div>
-        <div class="fact-row"><span class="fact-key">Labyrinth</span><span class="fact-val">Yes</span></div>
-        <div class="fact-row"><span class="fact-key">Multipurpose fields</span><span class="fact-val">Yes</span></div>
-        <div class="fact-row"><span class="fact-key">Nearby trails</span><span class="fact-val">Interurban Trail, 100 Acre Woods</span></div>
-        <div class="fact-row"><span class="fact-key">Toddler-friendly</span><span class="fact-val">Medium — toddler equipment connected to bigger structures</span></div>
-        <div class="fact-row"><span class="fact-key">Busyness</span><span class="fact-val">Usually not too busy</span></div>
-        
-        <div class="fact-row"><span class="fact-key">Party space</span><span class="fact-val">Yes — indoor rentable space + upper pavilion</span></div>
-        <div class="fact-row"><span class="fact-key">City website</span><span class="fact-val"><a href="https://cob.org/services/recreation/parks-trails/parks-guide/fairhaven-park" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:800;">cob.org ↗</a></span></div>
+        <div class="fact-row"><span class="fact-key">Best age</span><span class="fact-val">Elementary aged (~5–12)</span></div>
+        <div class="fact-row"><span class="fact-key">Access hours</span><span class="fact-val">After school, weekends, holidays, summer</span></div>
+        <div class="fact-row"><span class="fact-key">Parking</span><span class="fact-val">Free school lot</span></div>
+        <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">None — Trader Joe's is closest</span></div>
+        <div class="fact-row"><span class="fact-key">Shade</span><span class="fact-val">None — gets hot in afternoon ☀️</span></div>
+        <div class="fact-row"><span class="fact-key">Surface</span><span class="fact-val">Rubber safety surface</span></div>
+        <div class="fact-row"><span class="fact-key">Fencing</span><span class="fact-val">Mostly fenced</span></div>
+        <div class="fact-row"><span class="fact-key">Swings</span><span class="fact-val">Kid swings (some lower ones for younger kids)</span></div>
+        <div class="fact-row"><span class="fact-key">Slides</span><span class="fact-val">Lots — many different types</span></div>
+        <div class="fact-row"><span class="fact-key">Climbing</span><span class="fact-val">Tons of climbing features</span></div>
+        <div class="fact-row"><span class="fact-key">Monkey bars</span><span class="fact-val">Yes — kinda funky ones</span></div>
+        <div class="fact-row"><span class="fact-key">Accessible ramp</span><span class="fact-val">Yes</span></div>
+        <div class="fact-row"><span class="fact-key">Basketball</span><span class="fact-val">Yes — covered + open courts</span></div>
+        <div class="fact-row"><span class="fact-key">Soccer field</span><span class="fact-val">Yes — small astroturf</span></div>
+        <div class="fact-row"><span class="fact-key">Memorial Park nearby</span><span class="fact-val">Behind the school — fields & trails</span></div>
+        <div class="fact-row"><span class="fact-key">School website</span><span class="fact-val"><a href="https://sunnyland.bellinghamschools.org/" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:800;">sunnyland.bellinghamschools.org ↗</a></span></div>
       </div>
       </div>
     </div>
@@ -478,12 +303,16 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
 </div>
 
 
+
+
+
 <div class="nearby-section">
   <div class="section-label" style="margin-bottom:14px;">🗺️ Also nearby</div>
   <div class="nearby-grid">
-    <a href="cornwall.html" class="nearby-card"><span class="nearby-name">Cornwall Park</span><span class="nearby-arrow">→</span></a>
-    <a href="whatcom-falls.html" class="nearby-card"><span class="nearby-name">Whatcom Falls Park</span><span class="nearby-arrow">→</span></a>
-    <a href="#" class="nearby-card"><span class="nearby-name">Marine Park</span><span class="nearby-arrow">→</span></a>
+    <a href="shadyland.html" class="nearby-card"><span class="nearby-name">Shadyland (toddlers)</span><span class="nearby-arrow">→</span></a>
+    <a href="sunnyland-park.html" class="nearby-card"><span class="nearby-name">Sunnyland Park</span><span class="nearby-arrow">→</span></a>
+    <a href="parkview.html" class="nearby-card"><span class="nearby-name">Parkview School Playground</span><span class="nearby-arrow">→</span></a>
+    <a href="fairhaven.html" class="nearby-card"><span class="nearby-name">Fairhaven Park</span><span class="nearby-arrow">→</span></a>
   </div>
 </div>
 
@@ -493,7 +322,7 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
       <div style="font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:4px;">✏️ Something wrong or missing?</div>
       <div style="font-size:13px;font-weight:700;color:#666;line-height:1.5;">Spotted an error or have info to add? We'd love to hear from you!</div>
     </div>
-    <a href="mailto:bellinghamplaygroundfinder@gmail.com?subject=Fairhaven Park — update" style="display:inline-block;font-family:'Boogaloo',cursive;font-size:17px;background:var(--yellow);color:var(--dark);border:2.5px solid var(--dark);border-radius:12px;padding:9px 20px;text-decoration:none;box-shadow:3px 3px 0 var(--dark);white-space:nowrap;">Email us ✉️</a>
+    <a href="mailto:bellinghamplaygroundfinder@gmail.com?subject=Sunnyland Elementary School — update" style="display:inline-block;font-family:'Boogaloo',cursive;font-size:17px;background:var(--yellow);color:var(--dark);border:2.5px solid var(--dark);border-radius:12px;padding:9px 20px;text-decoration:none;box-shadow:3px 3px 0 var(--dark);white-space:nowrap;">Email us ✉️</a>
   </div>
 </div>
 
