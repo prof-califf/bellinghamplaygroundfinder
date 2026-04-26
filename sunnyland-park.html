@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Shadyland (Behind Sunnyland Elementary School) — Bellingham Playground Finder</title>
+<title>Sunnyland Park — Bellingham Playground Finder</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
@@ -11,7 +11,7 @@
 :root {
   --red:#F2383A; --orange:#FF7A1A; --yellow:#FFD600; --green:#3DBD4A;
   --blue:#2B87E3; --purple:#9B5DE5; --pink:#F15BB5; --cream:#FFFEF5;
-  --dark:#1E1B18; --accent:#3DBD4A; --accent-light:#D6F7E8; --accent-dark:#1B7A3E;
+  --dark:#1E1B18; --accent:#FF7A1A; --accent-light:#FFF0E0; --accent-dark:#8B4000;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--dark);background-image:repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(255,214,0,0.04) 18px,rgba(255,214,0,0.04) 36px);}
@@ -76,15 +76,27 @@ html.reduce-motion *{animation:none!important;transition:none!important;}
 .hero-inner{position:relative;z-index:1;max-width:760px;}
 .park-eyebrow{font-size:12px;font-weight:900;color:var(--accent-dark);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
 .park-title{font-family:'Boogaloo',cursive;font-size:clamp(30px,5vw,52px);color:var(--dark);line-height:1.05;margin-bottom:10px;}
-.park-subtitle{font-size:15px;font-weight:800;color:var(--accent-dark);margin-bottom:14px;font-style:italic;}
 .hero-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;}
 .dbadge{font-size:12px;font-weight:900;padding:5px 13px;border-radius:20px;border:2px solid var(--dark);box-shadow:2px 2px 0 var(--dark);}
 .hero-address{font-size:13px;font-weight:700;color:var(--accent-dark);margin-bottom:1.5rem;}
-.hero-mountain{width:100%;}
+.public-badge{position:absolute;top:14px;right:18px;z-index:2;width:130px;height:88px;filter:drop-shadow(2px 2px 0 var(--dark));pointer-events:none;}
+.public-badge svg{width:100%;height:100%;display:block;}
+@media(max-width:560px){.public-badge{width:96px;height:64px;top:10px;right:10px;}.hero-inner{padding-right:108px;}}
 .school-badge{position:absolute;top:18px;right:20px;z-index:2;background:#2D5F3F;color:#fff;font-family:'Boogaloo',cursive;padding:10px 18px;border:4px solid #8B5A2B;border-radius:6px;box-shadow:3px 3px 0 var(--dark);text-align:center;line-height:1.05;transform:rotate(-4deg);}
 .school-badge .sb-ico{font-size:22px;display:block;margin-bottom:2px;}
 .school-badge .sb-line{font-size:15px;}
 @media(max-width:560px){.school-badge{top:10px;right:10px;padding:6px 10px;transform:rotate(-3deg);}.school-badge .sb-ico{font-size:14px;margin-bottom:1px;}.school-badge .sb-line{font-size:10px;}.hero-inner{padding-right:90px;}}
+.hero-scene{position:relative;width:100%;height:260px;overflow:hidden;}
+.hero-scene svg{width:100%;height:100%;display:block;}
+
+
+
+
+
+
+
+
+
 .content{max-width:760px;margin:0 auto;padding:2rem 1.5rem;}
 .content-grid{display:grid;grid-template-columns:1fr 290px;gap:2rem;}
 @media(max-width:640px){.content-grid{grid-template-columns:1fr;}}
@@ -100,13 +112,12 @@ html.reduce-motion *{animation:none!important;transition:none!important;}
 .tip-item::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:900;font-size:16px;}
 .sidebar-card{background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem;margin-bottom:1rem;box-shadow:4px 4px 0 var(--dark);}
 .sidebar-title{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:12px;}
-.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:2px dashed var(--yellow);gap:10px;}
+.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:2px dashed var(--yellow);}
 .fact-row:last-child{border-bottom:none;}
-.fact-key{font-size:12px;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:0.05em;flex-shrink:0;}
-.fact-val{font-size:13px;font-weight:800;color:var(--dark);text-align:right;}
-.combo-box{background:#FFF9CC;border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);}
-.combo-label{font-family:'Boogaloo',cursive;font-size:16px;color:#7A5800;margin-bottom:6px;}
-.combo-text{font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;}
+.fact-key{font-size:12px;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:0.05em;}
+.fact-val{font-size:13px;font-weight:800;color:var(--dark);}
+
+
 .nearby-section{padding:0 1.5rem 2.5rem;max-width:760px;margin:0 auto;}
 .nearby-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;}
 .nearby-card{background:#fff;border:3px solid var(--dark);border-radius:14px;padding:12px 16px;text-decoration:none;display:flex;justify-content:space-between;align-items:center;box-shadow:3px 3px 0 var(--dark);transition:transform 0.15s,box-shadow 0.15s;}
@@ -145,8 +156,8 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
           </div>
           <div class="nav-dropdown-group">
             <div class="nav-dropdown-heading">🌳 Sunnyland</div>
-            <a href="sunnyland-park.html" role="menuitem">→ Sunnyland Park</a>
-            <a href="shadyland.html" role="menuitem" aria-current="page" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent-dark);">→ Shadyland (Behind Sunnyland Elem. School) (you are here)</a>
+            <a href="sunnyland-park.html" role="menuitem" aria-current="page" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent-dark);">→ Sunnyland Park (you are here)</a>
+            <a href="shadyland.html" role="menuitem">→ Shadyland (Behind Sunnyland Elem. School)</a>
           </div>
           <div class="nav-dropdown-group">
             <div class="nav-dropdown-heading">🌲 Fairhaven</div>
@@ -181,27 +192,51 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
 <div class="breadcrumb">
   <a href="index.html">← All Playgrounds</a>
   <span>›</span>
-  Shadyland (Behind Sunnyland Elementary School)
+  Sunnyland Park
 </div>
 
 <div class="hero">
-  <div class="school-badge" aria-label="School playground">
-    <span class="sb-ico">🏫</span>
-    <div class="sb-line">School<br/>Playground</div>
+  <div class="public-badge" aria-label="Public playground">
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="postPB_SP" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#444"/>
+          <stop offset="35%" stop-color="#7a7a7a"/>
+          <stop offset="65%" stop-color="#686868"/>
+          <stop offset="100%" stop-color="#383838"/>
+        </linearGradient>
+        <linearGradient id="signFacePB_SP" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1e5230"/>
+          <stop offset="100%" stop-color="#133520"/>
+        </linearGradient>
+      </defs>
+      <rect x="38" y="74" width="13" height="40" fill="url(#postPB_SP)" stroke="#222" stroke-width="1.5"/>
+      <rect x="38" y="74" width="2" height="40" fill="#909090" opacity="0.45"/>
+      <rect x="49" y="74" width="2" height="40" fill="#1a1a1a" opacity="0.35"/>
+      <rect x="36" y="80" width="17" height="4" rx="0.5" fill="#FFD600" stroke="#a88800" stroke-width="1"/>
+      <rect x="129" y="74" width="13" height="40" fill="url(#postPB_SP)" stroke="#222" stroke-width="1.5"/>
+      <rect x="129" y="74" width="2" height="40" fill="#909090" opacity="0.45"/>
+      <rect x="140" y="74" width="2" height="40" fill="#1a1a1a" opacity="0.35"/>
+      <rect x="127" y="80" width="17" height="4" rx="0.5" fill="#FFD600" stroke="#a88800" stroke-width="1"/>
+      <rect x="34" y="22" width="116" height="56" rx="3" fill="rgba(0,0,0,0.28)"/>
+      <rect x="31" y="20" width="116" height="56" rx="3" fill="url(#signFacePB_SP)" stroke="#081808" stroke-width="2"/>
+      <text x="89" y="46" font-family="Arial Black, Impact, sans-serif" font-size="13" font-weight="900" fill="#ffffff" letter-spacing="-0.5" text-anchor="middle">Bellingham</text>
+      <text x="89" y="63" font-family="Arial Black, Impact, sans-serif" font-size="9" font-weight="900" fill="#ffffff" letter-spacing="0.3" text-anchor="middle">PUBLIC PARK</text>
+    </svg>
   </div>
   <div class="hero-inner">
     <div class="park-eyebrow">📍 Sunnyland Neighbourhood, Bellingham</div>
-    <div class="park-title">Shadyland</div>
-    <div style="font-family:'Boogaloo',cursive;font-size:18px;color:var(--accent-dark);margin-top:-4px;margin-bottom:10px;">(Behind Sunnyland Elementary School)</div>
-    <div class="park-subtitle">A locals' nickname — the toddler playground tucked behind Sunnyland Elementary 🌳</div>
+    <div class="park-title">Sunnyland Park</div>
+    <div class="park-subtitle">A small, sunny neighborhood park with a great climbing setup ☀️</div>
     <div class="hero-badges">
-      <span class="dbadge" style="background:#D6F7E8;color:#1B7A3E;">🌳 Lots of shade</span>
-      <span class="dbadge" style="background:#FFE0EE;color:#993556;">🕸️ Spider web swing</span>
-      <span class="dbadge" style="background:#FFF0E0;color:#8B4000;">🛝 3 slides</span>
-      <span class="dbadge" style="background:#1E1B18;color:#FFD600;">🚪 Fully fenced</span>
-      <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">👶 Toddler-friendly</span>
+      <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">🧗 Climbing</span>
+      <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">🐒 Monkey bars</span>
+      <span class="dbadge" style="background:#FFE0EE;color:#993556;">🤸 Kid swings</span>
+      <span class="dbadge" style="background:#FFF0E0;color:#8B4000;">🛝 Slide</span>
+      <span class="dbadge" style="background:#FFF9CC;color:#7A5800;">☀️ Sun</span>
+      <span class="dbadge" style="background:#FFE8CC;color:#8B4000;">🍺 Brewery nearby</span>
     </div>
-    <div class="hero-address">📍 Behind Sunnyland Elementary · 2800 James St, Bellingham, WA 98225</div>
+    <div class="hero-address">📍 2338 Humboldt St, Bellingham, WA 98225</div>
   </div>
 
   <div class="hero-mountain" aria-hidden="true">
@@ -212,7 +247,7 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
           <stop offset="100%" stop-color="#dff0f8"/>
         </linearGradient>
       </defs>
-      <rect width="1440" height="90" fill="#D6F7E8"/>
+      <rect width="1440" height="90" fill="#FFF9CC"/>
       <path d="M0 90 L120 55 L240 70 L360 30 L480 65 L600 20 L720 58 L840 28 L960 62 L1080 18 L1200 52 L1320 35 L1440 50 L1440 90 Z" fill="#c2dce8" opacity="0.5"/>
       <path d="M0 90 L90 65 L200 80 L310 42 L430 72 L550 28 L660 65 L770 38 L890 75 L1000 32 L1110 68 L1230 46 L1350 70 L1440 52 L1440 90 Z" fill="#8ab8cc" opacity="0.6"/>
       <path d="M0 90 L100 60 L180 82 L260 45 L350 80 L450 28 L530 68 L620 48 L720 85 L800 35 L900 72 L980 42 L1080 78 L1160 30 L1260 65 L1360 48 L1440 62 L1440 90 Z" fill="#4a8fa8"/>
@@ -222,82 +257,80 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
       <rect x="0" y="87" width="1440" height="3" fill="#1E1B18"/>
     </svg>
   </div>
+
+      
+      
+    </div>
+  </div>
+  
+    
+    
+  </div>
 </div>
 
 <div class="content" id="main-content">
   <div class="content-grid">
     <div class="main-col">
       <div class="section-label">🌳 About this park</div>
-      <p class="park-desc">Shadyland is a locals' nickname for the small preschool & kindergarten playground tucked behind Sunnyland Elementary School. It's called Shadyland because it's somewhat hidden behind the school and rarely gets direct sun — making it a perfect summer destination when other playgrounds are baking. It's small, fully fenced, and built specifically for the school's youngest students, with three slides (a small one, a bigger one, and a twisty one), a spider-web circle swing, a small climbing dome, and ramps up to the play structures. The surface is fake grass throughout, so soft and clean. It's not affiliated with Whatcom Parks &amp; Rec — it's a Bellingham Public Schools playground that's open to the public after school hours, on weekends, and during holidays and summer break.</p>
+      <p class="park-desc">A small but mighty neighborhood park in the heart of Sunnyland. The playground is geared toward bigger kids — ages roughly 5–12 — with a tall monkey bar setup, a rock-style climbing structure with lots to scramble on, two regular swings, one slide, and some fun accessories like a spinning running thing the kids love. There's a green space next to the playground that's great for dogs to run around, and picnic tables for snack breaks. No baby swings, no shade, and no fence, so it's better suited to kids who can be trusted to stay near the play area. Wood chip surface throughout. The big bonus: it's directly across the street from Stemma West Brewery, with several other Bellingham favorites (Otherlands, El Sueñito) just blocks away.</p>
 
       <div class="unique-box">
         <div class="unique-label">✨ What makes it special</div>
-        <div class="unique-text">Two words: <strong>shade</strong> and <strong>fully fenced</strong>. There's so little shade at most Bellingham playgrounds in summer, and Shadyland's tucked-away spot behind the school stays cool and shaded most of the day. Combine that with a fully enclosed fence and you've got toddler-parent paradise — let them roam, sit down, breathe.</div>
-      </div>
-
-      <div class="combo-box">
-        <div class="combo-label">🛝 Bonus: this is a 3-playground destination!</div>
-        <div class="combo-text">Sunnyland Elementary has a <strong>huge</strong> elementary-aged playground in the front of the school with swings, monkey bars, and tons of climbing equipment — perfect if you have a mix of ages. And right behind the school is <strong>Memorial Park</strong>, a big grassy field with a walking trail. You can easily spend a whole afternoon hopping between all three.</div>
+        <div class="unique-text">A super fun climbing setup for bigger kids — the rock-style climbing structure plus tall monkey bars give kids a real challenge. Plus the unique "spinning running thing" accessory that kids absolutely love. And let's be honest: the brewery proximity is a real perk for parents.</div>
       </div>
 
       <div style="background:#FFF9CC;border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);">
-        <div style="font-family:'Boogaloo',cursive;font-size:16px;color:#7A5800;margin-bottom:6px;">⭐ Toddler review</div>
-        <div style="font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;">5/5 — "The spider swing is the best!" 🕸️</div>
+        <div style="font-family:'Boogaloo',cursive;font-size:16px;color:#7A5800;margin-bottom:6px;">⭐ 5-year-old review</div>
+        <div style="font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;">"Great climbing stuff!" 🧗</div>
       </div>
 
       <div class="section-label">💡 Tips from families</div>
       <ul class="tips-list">
-        <li class="tip-item">This is a school playground — open weekdays after school (~4pm), all day weekends, holidays & summer</li>
-        <li class="tip-item">The gate might look locked, but it opens from the inside — don't be fooled!</li>
-        <li class="tip-item">No restrooms on site — Trader Joe's shopping center is the closest, but you'll probably have to drive</li>
-        <li class="tip-item">Park at Sunnyland Elementary and walk around behind the school — there's also a trail through Memorial Park</li>
-        <li class="tip-item">Best in summer for the shade — most other Bellingham playgrounds have very little</li>
-        <li class="tip-item">Around midday it gets a bit sunnier, but mornings and afternoons stay shady</li>
-        <li class="tip-item">Bring snacks — there's nowhere to grab food without leaving</li>
-        <li class="tip-item">Got bigger kids too? The main Sunnyland playground out front has loads of equipment for elementary-age kids</li>
-        <li class="tip-item">Memorial Park behind the school is a great open grassy space to run around or kick a ball</li>
+        <li class="tip-item">Best for bigger kids (~5–12) — the climbing structure and tall monkey bars are not toddler-friendly</li>
+        <li class="tip-item">Don't miss the spinning running thing — it's the kid favorite</li>
+        <li class="tip-item">No shade and no fence — bring sunscreen, hats, and water in summer</li>
+        <li class="tip-item">No restrooms on site — Stemma West Brewery is right across the street</li>
+        <li class="tip-item">Surrounding green space is great for dogs to run around</li>
+        <li class="tip-item">Pair a playground visit with a beer flight at Stemma, Otherlands, or El Sueñito 🍺</li>
+        <li class="tip-item">Street parking only — usually easy to find</li>
+        <li class="tip-item">Picnic tables on site for snacks or lunch</li>
       </ul>
     </div>
 
     <div class="sidebar-col">
       <div class="sidebar-card">
         <div class="sidebar-title">📋 Quick facts</div>
-        <div class="fact-row"><span class="fact-key">Best age</span><span class="fact-val">1.5–7</span></div>
-        <div class="fact-row"><span class="fact-key">Access hours</span><span class="fact-val">After school, weekends, holidays, summer</span></div>
-        <div class="fact-row"><span class="fact-key">Parking</span><span class="fact-val">Free at Sunnyland Elementary lot</span></div>
-        <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">None</span></div>
-        <div class="fact-row"><span class="fact-key">Shade</span><span class="fact-val">Lots — that's the whole point!</span></div>
-        <div class="fact-row"><span class="fact-key">Surface</span><span class="fact-val">Fake grass</span></div>
-        <div class="fact-row"><span class="fact-key">Fencing</span><span class="fact-val">Fully fenced ✓</span></div>
-        <div class="fact-row"><span class="fact-key">Swings</span><span class="fact-val">1 spider-web circle swing</span></div>
-        <div class="fact-row"><span class="fact-key">Slides</span><span class="fact-val">3 (small, bigger, twisty)</span></div>
-        <div class="fact-row"><span class="fact-key">Climbing</span><span class="fact-val">Small climbing dome</span></div>
-        <div class="fact-row"><span class="fact-key">Accessible ramp</span><span class="fact-val">Yes — ramps up to play area</span></div>
-        <div class="fact-row"><span class="fact-key">Dogs</span><span class="fact-val">Not on school grounds</span></div>
-        <div class="fact-row"><span class="fact-key">Affiliated with</span><span class="fact-val">Bellingham Schools (not Parks & Rec)</span></div>
-        <div class="fact-row"><span class="fact-key">School website</span><span class="fact-val"><a href="https://sunnyland.bellinghamschools.org/" target="_blank" rel="noopener" style="color:var(--accent-dark);font-weight:800;">sunnyland.bellinghamschools.org ↗</a></span></div>
+        <div class="fact-row"><span class="fact-key">Best age</span><span class="fact-val">5–12</span></div>
+        <div class="fact-row"><span class="fact-key">Type</span><span class="fact-val">Public neighborhood park</span></div>
+        <div class="fact-row"><span class="fact-key">Parking</span><span class="fact-val">Street parking</span></div>
+        <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">None — brewery across the street</span></div>
+        <div class="fact-row"><span class="fact-key">Shade</span><span class="fact-val">None</span></div>
+        <div class="fact-row"><span class="fact-key">Sun</span><span class="fact-val">Yes — bring sunscreen ☀️</span></div>
+        <div class="fact-row"><span class="fact-key">Surface</span><span class="fact-val">Wood chips</span></div>
+        <div class="fact-row"><span class="fact-key">Fencing</span><span class="fact-val">No</span></div>
+        <div class="fact-row"><span class="fact-key">Swings</span><span class="fact-val">2 kid swings (no baby swings)</span></div>
+        <div class="fact-row"><span class="fact-key">Slides</span><span class="fact-val">1</span></div>
+        <div class="fact-row"><span class="fact-key">Climbing</span><span class="fact-val">Rock-style climbing structure</span></div>
+        <div class="fact-row"><span class="fact-key">Monkey bars</span><span class="fact-val">Yes — tall</span></div>
+        <div class="fact-row"><span class="fact-key">Picnic tables</span><span class="fact-val">Yes</span></div>
+        <div class="fact-row"><span class="fact-key">Dogs</span><span class="fact-val">Adjacent green space</span></div>
+        <div class="fact-row"><span class="fact-key">Nearby food/drink</span><span class="fact-val">Stemma West, Otherlands, El Sueñito 🍺</span></div>
       </div>
-
-      <div class="sidebar-card">
-        <div class="sidebar-title">🛝 Make it a 3-fer</div>
-        <div style="font-size:13px;font-weight:700;color:#444;line-height:1.6;">All within a 2-minute walk:
-        <ul style="list-style:none;padding:0;margin-top:10px;">
-          <li style="padding:6px 0;border-bottom:2px dashed var(--yellow);"><strong>🌳 Shadyland</strong> — toddlers (you're here)</li>
-          <li style="padding:6px 0;border-bottom:2px dashed var(--yellow);"><strong>🛝 Sunnyland front playground</strong> — bigger kids</li>
-          <li style="padding:6px 0;"><strong>🌱 Memorial Park</strong> — grass & trails</li>
-        </ul>
-        </div>
       </div>
     </div>
   </div>
 </div>
 
+
+
+
+
 <div class="nearby-section">
   <div class="section-label" style="margin-bottom:14px;">🗺️ Also nearby</div>
   <div class="nearby-grid">
-    <a href="cornwall.html" class="nearby-card"><span class="nearby-name">Cornwall Park</span><span class="nearby-arrow">→</span></a>
+    <a href="shadyland.html" class="nearby-card"><span class="nearby-name">Shadyland (toddlers)</span><span class="nearby-arrow">→</span></a>
     <a href="parkview.html" class="nearby-card"><span class="nearby-name">Parkview School Playground</span><span class="nearby-arrow">→</span></a>
-    <a href="whatcom-falls.html" class="nearby-card"><span class="nearby-name">Whatcom Falls Park</span><span class="nearby-arrow">→</span></a>
+    <a href="fairhaven.html" class="nearby-card"><span class="nearby-name">Fairhaven Park</span><span class="nearby-arrow">→</span></a>
   </div>
 </div>
 
@@ -307,7 +340,7 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
       <div style="font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:4px;">✏️ Something wrong or missing?</div>
       <div style="font-size:13px;font-weight:700;color:#666;line-height:1.5;">Spotted an error or have info to add? We'd love to hear from you!</div>
     </div>
-    <a href="mailto:bellinghamplaygroundfinder@gmail.com?subject=Shadyland (Sunnyland School) — update" style="display:inline-block;font-family:'Boogaloo',cursive;font-size:17px;background:var(--yellow);color:var(--dark);border:2.5px solid var(--dark);border-radius:12px;padding:9px 20px;text-decoration:none;box-shadow:3px 3px 0 var(--dark);white-space:nowrap;">Email us ✉️</a>
+    <a href="mailto:bellinghamplaygroundfinder@gmail.com?subject=Sunnyland Park — update" style="display:inline-block;font-family:'Boogaloo',cursive;font-size:17px;background:var(--yellow);color:var(--dark);border:2.5px solid var(--dark);border-radius:12px;padding:9px 20px;text-decoration:none;box-shadow:3px 3px 0 var(--dark);white-space:nowrap;">Email us ✉️</a>
   </div>
 </div>
 
