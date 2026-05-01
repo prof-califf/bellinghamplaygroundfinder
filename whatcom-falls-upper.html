@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en" id="html-root">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Whatcom Falls Upper Playground — Bellingham Playground Finder</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --red:#F2383A; --orange:#FF7A1A; --yellow:#FFD600; --green:#3DBD4A;
+  --blue:#2B87E3; --purple:#9B5DE5; --pink:#F15BB5; --cream:#FFFEF5;
+  --dark:#1E1B18; --accent:#FF7A1A; --accent-light:#FFF0E0; --accent-dark:#8B4000;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Nunito',sans-serif;background:var(--cream);color:var(--dark);background-image:repeating-linear-gradient(-45deg,transparent,transparent 18px,rgba(255,214,0,0.04) 18px,rgba(255,214,0,0.04) 36px);}
+.rainbow-bar{height:7px;background:linear-gradient(90deg,var(--red) 0%,var(--orange) 16.6%,var(--yellow) 33.2%,var(--green) 49.8%,var(--blue) 66.4%,var(--purple) 83%,var(--pink) 100%);}
+.skip-link{position:absolute;top:-100px;left:1rem;background:var(--dark);color:var(--yellow);font-family:'Boogaloo',cursive;font-size:16px;padding:10px 20px;border-radius:8px;border:3px solid var(--yellow);text-decoration:none;z-index:9999;transition:top 0.15s;}
+.skip-link:focus{top:8px;}
+:focus-visible{outline:3px solid var(--dark);outline-offset:3px;border-radius:4px;box-shadow:0 0 0 5px var(--yellow);}
+nav{background:#fff;border-bottom:4px solid var(--yellow);padding:0 1.5rem;height:84px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 3px 0 rgba(0,0,0,0.06);}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.logo-icon{width:42px;height:42px;background:var(--yellow);border-radius:50%;border:3px solid var(--dark);display:flex;align-items:center;justify-content:center;box-shadow:3px 3px 0 var(--dark);font-size:20px;}
+.logo-text{font-family:'Boogaloo',cursive;font-size:22px;letter-spacing:0.5px;}
+.logo-text .c1{color:var(--red);}
+.logo-text .c2{color:var(--orange);}
+.logo-text .c3{color:var(--green);}
+.logo-text .c4{color:var(--blue);}
+.logo-text .c5{color:var(--purple);}
+.nav-links{display:flex;gap:4px;}
+.nav-links a{font-size:13px;font-weight:800;color:var(--dark);text-decoration:none;padding:6px 14px;border-radius:30px;border:2.5px solid transparent;transition:all 0.15s;}
+.nav-links a:hover{background:var(--yellow);border-color:var(--dark);}
+.nav-links a.active{background:var(--red);color:#fff;border-color:var(--dark);box-shadow:2px 2px 0 var(--dark);}
+.nav-dropdown{position:relative;}
+.nav-dropdown-btn{font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;color:var(--dark);background:transparent;border:2.5px solid transparent;padding:6px 14px;border-radius:30px;cursor:pointer;display:flex;align-items:center;gap:4px;transition:all 0.15s;}
+.nav-dropdown-btn:hover,.nav-dropdown-btn[aria-expanded="true"]{background:var(--yellow);border-color:var(--dark);}
+.nav-dropdown-btn-active{background:var(--red);color:#fff;border-color:var(--dark);box-shadow:2px 2px 0 var(--dark);}
+.nav-dropdown-btn-active:hover{background:var(--red);color:#fff;filter:brightness(1.05);}
+
+.nav-dropdown-btn .caret{font-size:9px;transition:transform 0.15s;}
+.nav-dropdown-btn[aria-expanded="true"] .caret{transform:rotate(180deg);}
+.nav-dropdown-menu{position:absolute;top:calc(100% + 8px);left:0;min-width:240px;background:#fff;border:3px solid var(--dark);border-radius:14px;padding:8px;box-shadow:4px 4px 0 var(--dark);z-index:200;display:none;}
+.nav-dropdown-menu.open{display:block;}
+.nav-dropdown-group{padding:6px 10px;}
+.nav-dropdown-group + .nav-dropdown-group{border-top:2px dashed #eee;margin-top:4px;padding-top:10px;}
+.nav-dropdown-heading{font-family:'Boogaloo',cursive;font-size:14px;color:var(--dark);margin-bottom:4px;display:flex;align-items:center;gap:6px;}
+.nav-dropdown-menu a{display:block;font-size:13px;font-weight:800;color:#444;text-decoration:none;padding:6px 10px;border-radius:8px;border:2px solid transparent;transition:all 0.12s;}
+.nav-dropdown-menu a:hover{background:var(--yellow);border-color:var(--dark);color:var(--dark);}
+.a11y-nav-wrap{position:relative;}
+.a11y-nav-btn{width:38px;height:38px;background:var(--dark);color:var(--yellow);border:2.5px solid var(--dark);border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 0 rgba(0,0,0,0.18);transition:background 0.15s,transform 0.1s;flex-shrink:0;}
+.a11y-nav-btn:hover,.a11y-nav-btn:focus-visible{background:var(--yellow);color:var(--dark);outline:none;transform:scale(1.08);}
+.a11y-panel{position:absolute;top:calc(100% + 10px);right:0;width:280px;background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem;box-shadow:4px 4px 0 var(--dark);z-index:300;display:none;}
+.a11y-panel.open{display:block;}
+.a11y-panel-title{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:0.75rem;padding-bottom:0.5rem;border-bottom:3px solid var(--yellow);}
+.a11y-option{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:2px dashed #eee;gap:12px;}
+.a11y-option:last-child{border-bottom:none;}
+.a11y-option-text label{display:block;font-size:13px;font-weight:800;color:var(--dark);}
+.a11y-option-text p{font-size:11px;color:#777;margin-top:1px;}
+.a11y-toggle{position:relative;width:42px;height:23px;flex-shrink:0;}
+.a11y-toggle input{opacity:0;width:0;height:0;}
+.a11y-toggle-slider{position:absolute;inset:0;background:#ccc;border-radius:23px;border:2px solid var(--dark);cursor:pointer;transition:background 0.2s;}
+.a11y-toggle-slider::before{content:'';position:absolute;left:2px;top:2px;width:15px;height:15px;background:#fff;border-radius:50%;border:1.5px solid var(--dark);transition:transform 0.2s;}
+.a11y-toggle input:checked + .a11y-toggle-slider{background:var(--green);}
+.a11y-toggle input:checked + .a11y-toggle-slider::before{transform:translateX(19px);}
+html.high-contrast body{filter:contrast(1.35);}
+html.large-text body{font-size:118%;}
+html.reduce-motion *{animation:none!important;transition:none!important;}
+.breadcrumb{background:#fff;border-bottom:3px solid var(--yellow);padding:10px 1.5rem;font-size:12px;font-weight:700;color:#888;}
+.breadcrumb a{color:var(--accent-dark);text-decoration:none;font-weight:900;}
+.breadcrumb a:hover{text-decoration:underline;}
+.breadcrumb span{color:#ccc;margin:0 6px;}
+.hero{background:var(--accent-light);border-bottom:4px solid var(--dark);padding:2.5rem 1.5rem 0;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-60px;right:-60px;width:260px;height:260px;background:var(--accent);border-radius:50%;opacity:0.13;pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-80px;left:-40px;width:200px;height:200px;background:var(--accent);border-radius:50%;opacity:0.08;pointer-events:none;}
+.hero-inner{position:relative;z-index:1;max-width:760px;}
+.park-eyebrow{font-size:12px;font-weight:900;color:var(--accent-dark);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:8px;}
+.park-title{font-family:'Boogaloo',cursive;font-size:clamp(30px,5vw,52px);color:var(--dark);line-height:1.05;margin-bottom:10px;}
+.hero-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1rem;}
+.dbadge{font-size:12px;font-weight:900;padding:5px 13px;border-radius:20px;border:2px solid var(--dark);box-shadow:2px 2px 0 var(--dark);}
+.hero-address{font-size:13px;font-weight:700;color:var(--accent-dark);margin-bottom:1.5rem;}
+.public-badge{position:absolute;top:14px;right:18px;z-index:2;width:130px;height:88px;filter:drop-shadow(2px 2px 0 var(--dark));pointer-events:none;}
+.public-badge svg{width:100%;height:100%;display:block;}
+@media(max-width:560px){.public-badge{width:96px;height:64px;top:10px;right:10px;}.hero-inner{padding-right:108px;}}
+.school-badge{position:absolute;top:18px;right:20px;z-index:2;background:#2D5F3F;color:#fff;font-family:'Boogaloo',cursive;padding:10px 18px;border:4px solid #8B5A2B;border-radius:6px;box-shadow:3px 3px 0 var(--dark);text-align:center;line-height:1.05;transform:rotate(-4deg);}
+.school-badge .sb-ico{font-size:22px;display:block;margin-bottom:2px;}
+.school-badge .sb-line{font-size:15px;}
+@media(max-width:560px){.school-badge{top:10px;right:10px;padding:6px 10px;transform:rotate(-3deg);}.school-badge .sb-ico{font-size:14px;margin-bottom:1px;}.school-badge .sb-line{font-size:10px;}.hero-inner{padding-right:90px;}}
+.hero-scene{position:relative;width:100%;height:260px;overflow:hidden;}
+.hero-scene svg{width:100%;height:100%;display:block;}
+
+
+
+
+
+
+
+
+
+.content{max-width:760px;margin:0 auto;padding:2rem 1.5rem;}
+.content-grid{display:grid;grid-template-columns:1fr 290px;gap:2rem;}
+@media(max-width:640px){.content-grid{grid-template-columns:1fr;}}
+.section-label{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+.section-label::after{content:'';flex:1;height:3px;background:repeating-linear-gradient(90deg,var(--red) 0px,var(--red) 10px,var(--orange) 10px,var(--orange) 20px,var(--yellow) 20px,var(--yellow) 30px,var(--green) 30px,var(--green) 40px,var(--blue) 40px,var(--blue) 50px,var(--purple) 50px,var(--purple) 60px);border-radius:2px;}
+.park-desc{font-size:15px;font-weight:400;color:#444;line-height:1.8;margin-bottom:2rem;}
+.unique-box{background:var(--accent-light);border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);}
+.unique-label{font-family:'Boogaloo',cursive;font-size:16px;color:var(--accent-dark);margin-bottom:6px;}
+.unique-text{font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;}
+.tips-list{list-style:none;margin-bottom:2rem;}
+.tip-item{font-size:14px;font-weight:700;color:#444;padding:9px 0 9px 28px;border-bottom:2px dashed var(--yellow);position:relative;line-height:1.5;}
+.tip-item:last-child{border-bottom:none;}
+.tip-item::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:900;font-size:16px;}
+.sidebar-card{background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem;margin-bottom:1rem;box-shadow:4px 4px 0 var(--dark);}
+.sidebar-title{font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:12px;}
+.fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:2px dashed var(--yellow);}
+.fact-row:last-child{border-bottom:none;}
+.fact-key{font-size:12px;font-weight:900;color:#888;text-transform:uppercase;letter-spacing:0.05em;}
+.fact-val{font-size:13px;font-weight:800;color:var(--dark);}
+
+
+.nearby-section{padding:0 1.5rem 2.5rem;max-width:760px;margin:0 auto;}
+.nearby-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;}
+.nearby-card{background:#fff;border:3px solid var(--dark);border-radius:14px;padding:12px 16px;text-decoration:none;display:flex;justify-content:space-between;align-items:center;box-shadow:3px 3px 0 var(--dark);transition:transform 0.15s,box-shadow 0.15s;}
+.nearby-card:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--dark);}
+.nearby-name{font-size:13px;font-weight:900;color:var(--dark);}
+.nearby-arrow{font-size:18px;color:var(--red);font-weight:900;}
+footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
+.footer-rainbow{height:5px;background:linear-gradient(90deg,var(--red) 0%,var(--orange) 16.6%,var(--yellow) 33.2%,var(--green) 49.8%,var(--blue) 66.4%,var(--purple) 83%,var(--pink) 100%);margin-bottom:1.5rem;border-radius:2px;}
+.footer-logo{font-family:'Boogaloo',cursive;font-size:24px;color:var(--yellow);margin-bottom:4px;}
+.footer-logo span{color:var(--blue);}
+.footer-tagline{font-size:13px;font-weight:700;color:rgba(255,255,255,0.55);margin-bottom:1rem;}
+.footer-links{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1rem;}
+.footer-links a{font-size:12px;font-weight:800;color:rgba(255,255,255,0.65);text-decoration:none;padding:4px 12px;border-radius:20px;border:1.5px solid rgba(255,255,255,0.2);transition:all 0.15s;}
+.footer-links a:hover{color:var(--yellow);border-color:var(--yellow);}
+.footer-copy{font-size:11px;color:rgba(255,255,255,0.3);font-weight:700;}
+</style>
+</head>
+<body>
+<a href="#main-content" class="skip-link">Skip to main content</a>
+<div class="rainbow-bar"></div>
+<nav>
+  <a href="index.html" class="logo">
+    <div class="logo-icon">🛝</div>
+    <div class="logo-text"><span class="c1">b</span><span class="c2">e</span><span class="c3">l</span><span class="c4">l</span><span class="c5">i</span><span class="c1">n</span><span class="c2">g</span><span class="c3">h</span><span class="c4">a</span><span class="c5">m</span> <span class="c1">p</span><span class="c2">l</span><span class="c3">a</span><span class="c4">y</span><span class="c5">g</span><span class="c1">r</span><span class="c2">o</span><span class="c3">u</span><span class="c4">n</span><span class="c5">d</span> <span class="c1">f</span><span class="c2">i</span><span class="c3">n</span><span class="c4">d</span><span class="c5">e</span><span class="c1">r</span></div>
+  </a>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="nav-links">
+            <div class="nav-dropdown">
+        <button class="nav-dropdown-btn nav-dropdown-btn-active" id="hood-btn" aria-expanded="false" aria-controls="hood-menu" aria-haspopup="true">
+          Playgrounds <span class="caret">▼</span>
+        </button>
+        <div class="nav-dropdown-menu" id="hood-menu" role="menu" aria-label="Browse playgrounds by neighborhood">
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-heading">🎡 Cornwall Park</div>
+            <a href="parkview.html" role="menuitem">→ Parkview School Playground</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-heading">🌳 Sunnyland</div>
+            <a href="sunnyland-park.html" role="menuitem">→ Sunnyland Park</a>
+            <a href="sunnyland-elementary.html" role="menuitem">→ Sunnyland Elementary School</a>
+            <a href="shadyland.html" role="menuitem">→ Shadyland (Behind Sunnyland Elem. School)</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-heading">🌊 Whatcom Falls</div>
+            <a href="whatcom-falls-upper.html" role="menuitem" aria-current="page" style="background:var(--accent-light);border-color:var(--accent);color:var(--accent-dark);">→ Upper Playground (you are here)</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-heading">🌲 Fairhaven</div>
+            <a href="fairhaven.html" role="menuitem">→ Fairhaven Park</a>
+          </div>
+        </div>
+      </div>
+<a href="about.html">About</a>
+    </div>
+    <div style="width:1px;height:28px;background:rgba(0,0,0,0.12);border-radius:1px;flex-shrink:0;"></div>
+    <div class="a11y-nav-wrap">
+      <button class="a11y-nav-btn" id="a11y-nav-btn" aria-expanded="false" aria-controls="a11y-panel" aria-label="Accessibility settings">♿</button>
+      <div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="Accessibility options">
+        <div class="a11y-panel-title">♿ Accessibility</div>
+        <div class="a11y-option">
+          <div class="a11y-option-text"><label for="toggle-contrast">High contrast</label><p>Increases color contrast</p></div>
+          <label class="a11y-toggle"><input type="checkbox" id="toggle-contrast" role="switch" aria-checked="false"/><span class="a11y-toggle-slider"></span></label>
+        </div>
+        <div class="a11y-option">
+          <div class="a11y-option-text"><label for="toggle-text">Larger text</label><p>Increases base font size</p></div>
+          <label class="a11y-toggle"><input type="checkbox" id="toggle-text" role="switch" aria-checked="false"/><span class="a11y-toggle-slider"></span></label>
+        </div>
+        <div class="a11y-option">
+          <div class="a11y-option-text"><label for="toggle-motion">Reduce motion</label><p>Stops all animations</p></div>
+          <label class="a11y-toggle"><input type="checkbox" id="toggle-motion" role="switch" aria-checked="false"/><span class="a11y-toggle-slider"></span></label>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<div class="breadcrumb">
+  <a href="index.html">← All Playgrounds</a>
+  <span>›</span>
+  Whatcom Falls Upper Playground
+</div>
+
+<div class="hero">
+  <div class="public-badge" aria-label="Public playground">
+    <svg viewBox="0 0 180 120" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="postPB_SP" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#444"/>
+          <stop offset="35%" stop-color="#7a7a7a"/>
+          <stop offset="65%" stop-color="#686868"/>
+          <stop offset="100%" stop-color="#383838"/>
+        </linearGradient>
+        <linearGradient id="signFacePB_SP" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1e5230"/>
+          <stop offset="100%" stop-color="#133520"/>
+        </linearGradient>
+      </defs>
+      <rect x="38" y="74" width="13" height="40" fill="url(#postPB_SP)" stroke="#222" stroke-width="1.5"/>
+      <rect x="38" y="74" width="2" height="40" fill="#909090" opacity="0.45"/>
+      <rect x="49" y="74" width="2" height="40" fill="#1a1a1a" opacity="0.35"/>
+      <rect x="36" y="80" width="17" height="4" rx="0.5" fill="#FFD600" stroke="#a88800" stroke-width="1"/>
+      <rect x="129" y="74" width="13" height="40" fill="url(#postPB_SP)" stroke="#222" stroke-width="1.5"/>
+      <rect x="129" y="74" width="2" height="40" fill="#909090" opacity="0.45"/>
+      <rect x="140" y="74" width="2" height="40" fill="#1a1a1a" opacity="0.35"/>
+      <rect x="127" y="80" width="17" height="4" rx="0.5" fill="#FFD600" stroke="#a88800" stroke-width="1"/>
+      <rect x="34" y="22" width="116" height="56" rx="3" fill="rgba(0,0,0,0.28)"/>
+      <rect x="31" y="20" width="116" height="56" rx="3" fill="url(#signFacePB_SP)" stroke="#081808" stroke-width="2"/>
+      <text x="89" y="46" font-family="Arial Black, Impact, sans-serif" font-size="13" font-weight="900" fill="#ffffff" letter-spacing="-0.5" text-anchor="middle">Bellingham</text>
+      <text x="89" y="63" font-family="Arial Black, Impact, sans-serif" font-size="9" font-weight="900" fill="#ffffff" letter-spacing="0.3" text-anchor="middle">PUBLIC PARK</text>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <div class="park-eyebrow">📍 Whatcom Falls Park, Bellingham</div>
+    <div class="park-title">Whatcom Falls Upper Playground</div>
+    <div class="park-subtitle">A playground tucked inside Bellingham's most iconic nature park 🌲💧</div>
+    <div class="hero-badges">
+      <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">🧗 Giant rock</span>
+      <span class="dbadge" style="background:#EDE4FF;color:#6934D0;">🐒 Monkey bars</span>
+      <span class="dbadge" style="background:#FFE0EE;color:#993556;">🤸 Kid swings</span>
+      <span class="dbadge" style="background:#FFF0E0;color:#8B4000;">🛝 Twisty + racing slides</span>
+      <span class="dbadge" style="background:#DDEEFF;color:#0C5DB5;">🚲 Pump track (2!)</span>
+      <span class="dbadge" style="background:#D6F7E8;color:#1B7A3E;">🥾 Trails & waterfall</span>
+      <span class="dbadge" style="background:#FFE8CC;color:#8B4000;">🐕 Dog friendly</span>
+      <span class="dbadge" style="background:#FFF9CC;color:#7A5800;">☀️ Sun (morning) / Shade (afternoon)</span>
+    </div>
+    <div class="hero-address">📍 1401 Electric Ave, Bellingham, WA 98229 — inside Whatcom Falls Park</div>
+  </div>
+
+  <div class="hero-mountain" aria-hidden="true">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display:block;width:100%;height:80px;">
+      <defs>
+        <linearGradient id="snowG2" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#ffffff"/>
+          <stop offset="100%" stop-color="#dff0f8"/>
+        </linearGradient>
+      </defs>
+      <rect width="1440" height="90" fill="#D6F7E8"/>
+      <path d="M0 90 L120 55 L240 70 L360 30 L480 65 L600 20 L720 58 L840 28 L960 62 L1080 18 L1200 52 L1320 35 L1440 50 L1440 90 Z" fill="#c2dce8" opacity="0.5"/>
+      <path d="M0 90 L90 65 L200 80 L310 42 L430 72 L550 28 L660 65 L770 38 L890 75 L1000 32 L1110 68 L1230 46 L1350 70 L1440 52 L1440 90 Z" fill="#8ab8cc" opacity="0.6"/>
+      <path d="M0 90 L100 60 L180 82 L260 45 L350 80 L450 28 L530 68 L620 48 L720 85 L800 35 L900 72 L980 42 L1080 78 L1160 30 L1260 65 L1360 48 L1440 62 L1440 90 Z" fill="#4a8fa8"/>
+      <path d="M450 28 L438 42 L462 42 Z" fill="url(#snowG2)" opacity="0.95"/>
+      <path d="M800 35 L788 48 L812 48 Z" fill="url(#snowG2)" opacity="0.95"/>
+      <path d="M1160 30 L1149 43 L1171 43 Z" fill="url(#snowG2)" opacity="0.9"/>
+      <rect x="0" y="87" width="1440" height="3" fill="#1E1B18"/>
+    </svg>
+  </div>
+
+      
+      
+    </div>
+  </div>
+  
+    
+    
+  </div>
+</div>
+
+<div class="content" id="main-content">
+  <div class="content-grid">
+    <div class="main-col">
+      <div class="section-label">🌳 About this park</div>
+      <p class="park-desc">The Upper Playground is one of two playgrounds inside the massive Whatcom Falls Park — a 240+ acre forested wonderland with waterfalls, ponds, and miles of trails. The playground itself is geared toward bigger kids (~4–12) with twisty and racing slides, a circular set of high monkey bars, two kid swings, a basketball court, and a tennis court. The standout is a giant rock that's been the kid favorite forever — perfect for climbing and scrambling. Wood chip surface throughout. There's no fence and no shade in the morning, but there's a single restroom right next to the playground (and two more by the Lower Playground if you need them). The park itself is huge and it's hard to beat for combining a play session with a hike, a pump track session, or a waterfall visit. Best for families who want a playground stop AND a real outdoor adventure in one trip.</p>
+
+      <div class="unique-box">
+        <div class="unique-label">✨ What makes it special</div>
+        <div class="unique-text">The fact that it's <strong>nestled inside Whatcom Falls Park</strong>. You can pair a playground visit with a waterfall hike, a pond walk, a pump track session (there are TWO — one for littles, one for bigger kids), or even tennis. It's the closest Bellingham gets to a real "spend the whole day here" outdoor destination. The giant climbing rock is the iconic kid favorite.</div>
+      </div>
+
+      <div class="combo-box">
+        <div class="combo-label">🛝 Got little ones too? Hit the Lower Playground</div>
+        <div class="combo-text">Whatcom Falls has a <strong>second playground</strong> down a trail — the Lower Playground is more toddler-friendly with baby swings and gentler equipment. You can't see it from the Upper Playground, so it's worth knowing about if you've got a mix of ages. Walk down the trail and you'll find it.</div>
+      </div>
+
+      <div style="background:#FFF9CC;border:3px solid var(--dark);border-radius:14px;padding:14px 16px;margin-bottom:2rem;box-shadow:4px 4px 0 var(--dark);">
+        <div style="font-family:'Boogaloo',cursive;font-size:16px;color:#7A5800;margin-bottom:6px;">⭐ 5-year-old review</div>
+        <div style="font-size:14px;font-weight:700;color:var(--dark);line-height:1.6;">"THE ROCK IS FUN TO CLIMB!" 🪨</div>
+      </div>
+
+      <div class="section-label">💡 Tips from families</div>
+      <ul class="tips-list">
+        <li class="tip-item">Best for bigger kids (~4–12) — though a 2-year-old can still find a few things to do</li>
+        <li class="tip-item">Bring bikes or scooters — the pump track is a huge bonus and there's one for littles AND one for bigger kids</li>
+        <li class="tip-item">Sunny in the morning, shaded in the afternoon — pick your timing</li>
+        <li class="tip-item">Weekends get crowded — go early or on a weekday if you can</li>
+        <li class="tip-item">One restroom right next to the playground — if there's a line, two more are by the Lower Playground</li>
+        <li class="tip-item">Got toddlers too? Walk down the trail to the <strong>Lower Playground</strong> — it has baby swings and gentler equipment</li>
+        <li class="tip-item">Combine with a waterfall visit, pond walk, or hike — Whatcom Falls Park is huge</li>
+        <li class="tip-item">Lafeen's (donuts, ice cream, and coffee) is nearby for a sweet treat afterward 🍩</li>
+        <li class="tip-item">There's also a sub shop at a gas station close by if you need a quick lunch</li>
+        <li class="tip-item">Lake Whatcom is very close — pair a playground morning with a lake swim or paddle on a sunny day</li>
+        <li class="tip-item">Galbraith Mountain trailhead is up Birch Street if you want to add mountain bike trails to the day</li>
+      </ul>
+    </div>
+
+    <div class="sidebar-col">
+      <div class="sidebar-card">
+        <div class="sidebar-title">📋 Quick facts</div>
+        <div class="fact-row"><span class="fact-key">Best age</span><span class="fact-val">4–12</span></div>
+        <div class="fact-row"><span class="fact-key">Type</span><span class="fact-val">Public park playground</span></div>
+        <div class="fact-row"><span class="fact-key">Inside</span><span class="fact-val">Whatcom Falls Park (240+ acres)</span></div>
+        <div class="fact-row"><span class="fact-key">Parking</span><span class="fact-val">Lots of spaces — busy on weekends</span></div>
+        <div class="fact-row"><span class="fact-key">Restrooms</span><span class="fact-val">1 next to playground (+2 by Lower Playground)</span></div>
+        <div class="fact-row"><span class="fact-key">Shade</span><span class="fact-val">Afternoon ✓</span></div>
+        <div class="fact-row"><span class="fact-key">Sun</span><span class="fact-val">Morning ☀️</span></div>
+        <div class="fact-row"><span class="fact-key">Surface</span><span class="fact-val">Wood chips</span></div>
+        <div class="fact-row"><span class="fact-key">Fencing</span><span class="fact-val">No</span></div>
+        <div class="fact-row"><span class="fact-key">Swings</span><span class="fact-val">2 kid swings (baby swings at Lower Playground)</span></div>
+        <div class="fact-row"><span class="fact-key">Slides</span><span class="fact-val">Twisty + racing</span></div>
+        <div class="fact-row"><span class="fact-key">Climbing</span><span class="fact-val">Lots — including a giant rock 🪨</span></div>
+        <div class="fact-row"><span class="fact-key">Monkey bars</span><span class="fact-val">Yes — high & circular</span></div>
+        <div class="fact-row"><span class="fact-key">Pump track</span><span class="fact-val">Yes — 2 (littles + bigger kids) 🚲</span></div>
+        <div class="fact-row"><span class="fact-key">Basketball</span><span class="fact-val">Yes — full court</span></div>
+        <div class="fact-row"><span class="fact-key">Tennis</span><span class="fact-val">Yes</span></div>
+        <div class="fact-row"><span class="fact-key">Picnic tables</span><span class="fact-val">Yes</span></div>
+        <div class="fact-row"><span class="fact-key">Trails</span><span class="fact-val">Lots — waterfall, pond, miles of trails</span></div>
+        <div class="fact-row"><span class="fact-key">Dogs</span><span class="fact-val">Welcome 🐕</span></div>
+        <div class="fact-row"><span class="fact-key">Nearby food/drink</span><span class="fact-val">Lafeen's (donuts, ice cream, coffee) 🍩</span></div>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="nearby-section">
+  <div class="section-label" style="margin-bottom:14px;">🌳 Nearby destinations</div>
+  <p style="font-size:14px;font-weight:700;color:#666;line-height:1.6;margin-bottom:14px;">Other things to hit during the same trip:</p>
+  <div class="nearby-grid">
+    <div class="nearby-card" style="cursor:default;"><span class="nearby-name">💧 Whatcom Falls (waterfall)</span></div>
+    <div class="nearby-card" style="cursor:default;"><span class="nearby-name">🦆 Pond near playground</span></div>
+    <div class="nearby-card" style="cursor:default;"><span class="nearby-name">🥾 Whatcom Falls trails</span></div>
+    <div class="nearby-card" style="cursor:default;"><span class="nearby-name">🏞️ Lake Whatcom (very close)</span></div>
+    <div class="nearby-card" style="cursor:default;"><span class="nearby-name">🚵 Galbraith Mtn (Birch St)</span></div>
+    <div class="nearby-card" style="cursor:default;"><span class="nearby-name">🍩 Lafeen's Donuts</span></div>
+  </div>
+</div>
+
+<div style="max-width:760px;margin:0 auto;padding:1.5rem 1.5rem 2.5rem;">
+  <div style="background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem 1.5rem;box-shadow:4px 4px 0 var(--dark);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+    <div>
+      <div style="font-family:'Boogaloo',cursive;font-size:18px;color:var(--dark);margin-bottom:4px;">✏️ Something wrong or missing?</div>
+      <div style="font-size:13px;font-weight:700;color:#666;line-height:1.5;">Spotted an error or have info to add? We'd love to hear from you!</div>
+    </div>
+    <a href="mailto:bellinghamplaygroundfinder@gmail.com?subject=Whatcom Falls Upper Playground — update" style="display:inline-block;font-family:'Boogaloo',cursive;font-size:17px;background:var(--yellow);color:var(--dark);border:2.5px solid var(--dark);border-radius:12px;padding:9px 20px;text-decoration:none;box-shadow:3px 3px 0 var(--dark);white-space:nowrap;">Email us ✉️</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-rainbow"></div>
+  <div class="footer-logo"><span style="color:var(--red)">b</span><span style="color:var(--orange)">e</span><span style="color:var(--green)">l</span><span style="color:var(--blue)">l</span><span style="color:var(--purple)">i</span><span style="color:var(--red)">n</span><span style="color:var(--orange)">g</span><span style="color:var(--green)">h</span><span style="color:var(--blue)">a</span><span style="color:var(--purple)">m</span> <span style="color:var(--red)">p</span><span style="color:var(--orange)">l</span><span style="color:var(--green)">a</span><span style="color:var(--blue)">y</span><span style="color:var(--purple)">g</span><span style="color:var(--red)">r</span><span style="color:var(--orange)">o</span><span style="color:var(--green)">u</span><span style="color:var(--blue)">n</span><span style="color:var(--purple)">d</span> <span style="color:var(--red)">f</span><span style="color:var(--orange)">i</span><span style="color:var(--green)">n</span><span style="color:var(--blue)">d</span><span style="color:var(--purple)">e</span><span style="color:var(--red)">r</span></div>
+  <div class="footer-tagline">Finding the best playgrounds in Bellingham for local families 🌲</div>
+  <div class="footer-links">
+    <a href="index.html">All Playgrounds</a>
+    <a href="mailto:bellinghamplaygroundfinder@gmail.com?subject=Submit a park">Submit a park</a>
+    <a href="about.html">About us</a>
+  </div>
+  <div class="footer-copy">© 2025 Bellingham Playground Finder · Whatcom County, WA</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const a11yPanel = document.getElementById('a11y-panel');
+  const a11yBtn   = document.getElementById('a11y-nav-btn');
+  const htmlRoot  = document.getElementById('html-root');
+  if (!a11yPanel || !a11yBtn) return;
+  function toggleA11y(open) {
+    a11yPanel.classList.toggle('open', open);
+    a11yBtn.setAttribute('aria-expanded', String(open));
+  }
+  a11yBtn.addEventListener('click', e => { e.stopPropagation(); toggleA11y(!a11yPanel.classList.contains('open')); });
+  document.addEventListener('click', e => { if (!a11yPanel.contains(e.target) && e.target !== a11yBtn) toggleA11y(false); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { toggleA11y(false); a11yBtn.focus(); } });
+  function bindToggle(id, cls) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', () => { htmlRoot.classList.toggle(cls, el.checked); el.setAttribute('aria-checked', String(el.checked)); });
+  }
+  bindToggle('toggle-contrast','high-contrast');
+  bindToggle('toggle-text','large-text');
+  bindToggle('toggle-motion','reduce-motion');
+
+  // Neighborhoods dropdown
+  const hoodBtn  = document.getElementById('hood-btn');
+  const hoodMenu = document.getElementById('hood-menu');
+  if (hoodBtn && hoodMenu) {
+    function toggleHood(open) {
+      hoodMenu.classList.toggle('open', open);
+      hoodBtn.setAttribute('aria-expanded', String(open));
+    }
+    hoodBtn.addEventListener('click', e => { e.stopPropagation(); toggleHood(!hoodMenu.classList.contains('open')); });
+    document.addEventListener('click', e => { if (!hoodMenu.contains(e.target) && e.target !== hoodBtn) toggleHood(false); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && hoodMenu.classList.contains('open')) { toggleHood(false); hoodBtn.focus(); } });
+  }
+});
+</script>
+</body>
+</html>
