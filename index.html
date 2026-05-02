@@ -676,18 +676,23 @@ footer {
   position: relative;
 }
 .a11y-nav-btn {
-  width: 38px;
   height: 38px;
   background: var(--dark);
   color: var(--yellow);
   border: 2.5px solid var(--dark);
-  border-radius: 50%;
-  font-size: 18px;
+  border-radius: 24px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0 14px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 2px 2px 0 rgba(0,0,0,0.18);
+  white-space: nowrap;
   transition: background 0.15s, transform 0.1s;
   flex-shrink: 0;
 }
@@ -814,7 +819,7 @@ html.reduce-motion * { animation: none !important; transition: none !important; 
     </div>
     <div style="width:1px;height:28px;background:rgba(0,0,0,0.12);border-radius:1px;flex-shrink:0;"></div>
     <div class="a11y-nav-wrap">
-      <button class="a11y-nav-btn" id="a11y-nav-btn" aria-expanded="false" aria-controls="a11y-panel" aria-label="Accessibility settings">♿</button>
+      <button class="a11y-nav-btn" id="a11y-nav-btn" aria-expanded="false" aria-controls="a11y-panel" aria-label="Accessibility settings">Accessibility</button>
       <div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="Accessibility options">
         <div class="a11y-panel-title">♿ Accessibility</div>
         <div class="a11y-option">

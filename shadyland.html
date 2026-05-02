@@ -48,7 +48,7 @@ nav{background:#fff;border-bottom:4px solid var(--yellow);padding:0 1.5rem;heigh
 .nav-dropdown-menu a{display:block;font-size:13px;font-weight:800;color:#444;text-decoration:none;padding:6px 10px;border-radius:8px;border:2px solid transparent;transition:all 0.12s;}
 .nav-dropdown-menu a:hover{background:var(--yellow);border-color:var(--dark);color:var(--dark);}
 .a11y-nav-wrap{position:relative;}
-.a11y-nav-btn{width:38px;height:38px;background:var(--dark);color:var(--yellow);border:2.5px solid var(--dark);border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 0 rgba(0,0,0,0.18);transition:background 0.15s,transform 0.1s;flex-shrink:0;}
+.a11y-nav-btn{height:38px;background:var(--dark);color:var(--yellow);border:2.5px solid var(--dark);border-radius:24px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:900;text-transform:uppercase;letter-spacing:0.04em;padding:0 14px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:2px 2px 0 rgba(0,0,0,0.18);transition:background 0.15s,transform 0.1s;flex-shrink:0;white-space:nowrap;}
 .a11y-nav-btn:hover,.a11y-nav-btn:focus-visible{background:var(--yellow);color:var(--dark);outline:none;transform:scale(1.08);}
 .a11y-panel{position:absolute;top:calc(100% + 10px);right:0;width:280px;background:#fff;border:3px solid var(--dark);border-radius:16px;padding:1.25rem;box-shadow:4px 4px 0 var(--dark);z-index:300;display:none;}
 .a11y-panel.open{display:block;}
@@ -171,7 +171,7 @@ footer{background:var(--dark);padding:2rem 1.5rem;text-align:center;}
     </div>
     <div style="width:1px;height:28px;background:rgba(0,0,0,0.12);border-radius:1px;flex-shrink:0;"></div>
     <div class="a11y-nav-wrap">
-      <button class="a11y-nav-btn" id="a11y-nav-btn" aria-expanded="false" aria-controls="a11y-panel" aria-label="Accessibility settings">♿</button>
+      <button class="a11y-nav-btn" id="a11y-nav-btn" aria-expanded="false" aria-controls="a11y-panel" aria-label="Accessibility settings">Accessibility</button>
       <div class="a11y-panel" id="a11y-panel" role="dialog" aria-label="Accessibility options">
         <div class="a11y-panel-title">♿ Accessibility</div>
         <div class="a11y-option">
