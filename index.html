@@ -654,6 +654,32 @@ footer {
 }
 .park-card { animation: slideUp 0.4s ease both; }
 
+.hood-header {
+  font-family: 'Boogaloo', cursive;
+  font-size: 22px;
+  color: var(--dark);
+  margin: 2rem 0 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  grid-column: 1 / -1;
+}
+.hood-header:first-child { margin-top: 0; }
+.hood-header::after {
+  content: '';
+  flex: 1;
+  height: 3px;
+  background: repeating-linear-gradient(90deg, var(--red) 0px, var(--red) 10px, var(--orange) 10px, var(--orange) 20px, var(--yellow) 20px, var(--yellow) 30px, var(--green) 30px, var(--green) 40px, var(--blue) 40px, var(--blue) 50px, var(--purple) 50px, var(--purple) 60px);
+  border-radius: 2px;
+}
+.hood-subtitle {
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  font-family: 'Nunito', sans-serif;
+  margin-left: 4px;
+}
+
 /* SKIP LINK */
 .skip-link {
   position: absolute;
@@ -746,6 +772,10 @@ footer {
           <div class="nav-dropdown-group">
             <div class="nav-dropdown-heading">🌲 Fairhaven</div>
             <a href="fairhaven.html" role="menuitem">→ Fairhaven Park</a>
+          </div>
+          <div class="nav-dropdown-group">
+            <div class="nav-dropdown-heading">🏰 Lynden</div>
+            <a href="million-smiles.html" role="menuitem">→ Million Smiles Playground</a>
           </div>
         </div>
       </div>
@@ -855,7 +885,7 @@ footer {
   <div class="footer-logo"><span style="color:var(--red)">b</span><span style="color:var(--orange)">e</span><span style="color:var(--green)">l</span><span style="color:var(--blue)">l</span><span style="color:var(--purple)">i</span><span style="color:var(--red)">n</span><span style="color:var(--orange)">g</span><span style="color:var(--green)">h</span><span style="color:var(--blue)">a</span><span style="color:var(--purple)">m</span> <span style="color:var(--red)">p</span><span style="color:var(--orange)">l</span><span style="color:var(--green)">a</span><span style="color:var(--blue)">y</span><span style="color:var(--purple)">g</span><span style="color:var(--red)">r</span><span style="color:var(--orange)">o</span><span style="color:var(--green)">u</span><span style="color:var(--blue)">n</span><span style="color:var(--purple)">d</span> <span style="color:var(--red)">f</span><span style="color:var(--orange)">i</span><span style="color:var(--green)">n</span><span style="color:var(--blue)">d</span><span style="color:var(--purple)">e</span><span style="color:var(--red)">r</span></div>
   <div class="footer-tagline">Finding the best playgrounds in Bellingham for local families 🌲</div>
   <div class="footer-links">
-    <a href="index.html">Playgrounds</a>
+    <a href="index.html">Home</a>
     <a href="mailto:bellinghamplaygroundfinder@gmail.com?subject=Submit a park">Submit a park</a>
     <a href="about.html">About us</a>
     <a href="mailto:bellinghamplaygroundfinder@gmail.com">Contact</a>
@@ -895,6 +925,7 @@ const parks = [
   {id:'elizabeth-park', name:'Elizabeth Park (Lizzy Park)', area:'Columbia neighbourhood', neighborhood:'Columbia', color:'#D6F7E8', emoji:'🌳', tags:['Baby swings','Kid swings','Slides','Monkey bars','Shade','Restrooms','Dog friendly'], desc:'A shaded, European-style city park with 5 slides, both baby and kid swings (rare!), tennis, and Thursday summer concerts. A summer favorite — and one of the few Bellingham parks with real shade.'},
   {id:'whatcom-falls-upper', name:'Whatcom Falls Upper Playground', area:'Whatcom Falls Park', neighborhood:'Whatcom Falls', color:'#D6F7E8', emoji:'🌲', tags:['Kid swings','Slides','Monkey bars','Climbing','Pump track','Basketball','Tennis','Trails','Shade','Sun','Dog friendly','Restrooms'], tagNotes:{'Shade':'afternoon','Sun':'morning'}, desc:'A playground tucked inside Bellingham\'s most iconic nature park. Twisty + racing slides, a giant climbing rock, two pump tracks (littles and bigger kids), basketball, tennis, and miles of trails with waterfalls and ponds. Pair with the Lower Playground for younger kids.'},
   {id:'lake-padden', name:'Lake Padden Playground', area:'Lake Padden Park, Samish neighbourhood', neighborhood:'Samish', color:'#DDEEFF', emoji:'🏞️', tags:['Baby swings','Kid swings','Slides','Climbing','Basketball','Trails','Beach access','Restrooms','Dog friendly','Sun'], desc:"A playground next to a lake — with two side-by-side structures (one for littles, one for bigger kids), a beach, dock, and 2-mile loop trail. Pack a lunch and make a day of it. Best in mornings (no shade)."},
+  {id:'million-smiles', name:'Million Smiles Playground', area:'Lynden, WA', neighborhood:'Lynden', color:'#FFF0E0', emoji:'🏰', tags:['Baby swings','Kid swings','Toddler-friendly','Slides','Monkey bars','Climbing','Fenced','Shade','Restrooms'], desc:"A massive custom-built castle playground in Lynden — treehouses, towers, giant tube slide, creek splashing, and a separate toddler area. Fully fenced, mostly shaded. Probably the best playground in Whatcom County. Worth the 20-minute drive."},
 ];
 
 const tagEmoji = {
@@ -957,7 +988,29 @@ function render(){
   });
   if(!filtered.length){ grid.innerHTML=''; noRes.style.display='block'; return; }
   noRes.style.display='none';
-  grid.innerHTML = filtered.map((p,i)=>`
+
+  // Define neighborhood order and emojis
+  const hoodOrder = ['Cornwall Park','Sunnyland','Columbia','Whatcom Falls','Samish','Fairhaven','Lynden'];
+  const hoodEmoji = {'Cornwall Park':'🎡','Sunnyland':'🌳','Columbia':'🌳','Whatcom Falls':'🌊','Samish':'🏞️','Fairhaven':'🌲','Lynden':'🏰'};
+  const hoodNote = {'Lynden':'~20 min from Bellingham'};
+
+  // Group filtered parks by neighborhood
+  const groups = {};
+  filtered.forEach(p => {
+    const h = p.neighborhood || 'Other';
+    if (!groups[h]) groups[h] = [];
+    groups[h].push(p);
+  });
+
+  let html = '';
+  let i = 0;
+  hoodOrder.forEach(hood => {
+    if (!groups[hood] || !groups[hood].length) return;
+    const emoji = hoodEmoji[hood] || '📍';
+    const note = hoodNote[hood] ? `<span class="hood-subtitle">(${hoodNote[hood]})</span>` : '';
+    html += `<div class="hood-header">${emoji} ${hood} ${note}</div>`;
+    groups[hood].forEach(p => {
+      html += `
     <a class="park-card" href="${p.id}.html" style="animation-delay:${i*0.07}s" aria-label="${p.name} — ${p.area}">
       <div class="park-card-top" style="background:${p.color};"></div>
       <div class="park-body">
@@ -967,8 +1020,32 @@ function render(){
         <div class="park-badges">${p.tags.map(t=>`<span class="pbadge" style="${badgeStyle(t)}">${(tagEmoji[t]||'')} ${t}${(p.tagNotes&&p.tagNotes[t])?` <span style="opacity:0.75;font-weight:700;">(${p.tagNotes[t]})</span>`:''}</span>`).join('')}</div>
         <span class="explore-btn" style="margin-top:14px;">→ Explore this park</span>
       </div>
-    </a>
-  `).join('');
+    </a>`;
+      i++;
+    });
+  });
+
+  // Any neighborhoods not in hoodOrder
+  Object.keys(groups).forEach(hood => {
+    if (hoodOrder.includes(hood)) return;
+    html += `<div class="hood-header">📍 ${hood}</div>`;
+    groups[hood].forEach(p => {
+      html += `
+    <a class="park-card" href="${p.id}.html" style="animation-delay:${i*0.07}s" aria-label="${p.name} — ${p.area}">
+      <div class="park-card-top" style="background:${p.color};"></div>
+      <div class="park-body">
+        <div class="park-name">${p.name}</div>
+        <div class="park-area">📍 ${p.area}</div>
+        <p style="font-size:13px;color:#555;font-weight:600;line-height:1.5;margin:8px 0 12px;">${p.desc}</p>
+        <div class="park-badges">${p.tags.map(t=>`<span class="pbadge" style="${badgeStyle(t)}">${(tagEmoji[t]||'')} ${t}${(p.tagNotes&&p.tagNotes[t])?` <span style="opacity:0.75;font-weight:700;">(${p.tagNotes[t]})</span>`:''}</span>`).join('')}</div>
+        <span class="explore-btn" style="margin-top:14px;">→ Explore this park</span>
+      </div>
+    </a>`;
+      i++;
+    });
+  });
+
+  grid.innerHTML = html;
 }
 
 document.querySelectorAll('.fchip').forEach(c=>{
