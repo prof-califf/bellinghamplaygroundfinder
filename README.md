@@ -2,7 +2,7 @@
 
 A little love letter to Bellingham playgrounds — built by a local family for local families.
 
-🌐 **Live site:** [bellinghamplaygroundfinder.com](#) *(update with real URL)*
+🌐 **Live site:** (#) *(update with real URL)*
 
 ## What is this?
 
