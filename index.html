@@ -988,29 +988,7 @@ function render(){
   });
   if(!filtered.length){ grid.innerHTML=''; noRes.style.display='block'; return; }
   noRes.style.display='none';
-
-  // Define neighborhood order and emojis
-  const hoodOrder = ['Cornwall Park','Sunnyland','Columbia','Whatcom Falls','Samish','Fairhaven','Lynden'];
-  const hoodEmoji = {'Cornwall Park':'🎡','Sunnyland':'🌳','Columbia':'🌳','Whatcom Falls':'🌊','Samish':'🏞️','Fairhaven':'🌲','Lynden':'🏰'};
-  const hoodNote = {'Lynden':'~20 min from Bellingham'};
-
-  // Group filtered parks by neighborhood
-  const groups = {};
-  filtered.forEach(p => {
-    const h = p.neighborhood || 'Other';
-    if (!groups[h]) groups[h] = [];
-    groups[h].push(p);
-  });
-
-  let html = '';
-  let i = 0;
-  hoodOrder.forEach(hood => {
-    if (!groups[hood] || !groups[hood].length) return;
-    const emoji = hoodEmoji[hood] || '📍';
-    const note = hoodNote[hood] ? `<span class="hood-subtitle">(${hoodNote[hood]})</span>` : '';
-    html += `<div class="hood-header">${emoji} ${hood} ${note}</div>`;
-    groups[hood].forEach(p => {
-      html += `
+  grid.innerHTML = filtered.map((p,i)=>`
     <a class="park-card" href="${p.id}.html" style="animation-delay:${i*0.07}s" aria-label="${p.name} — ${p.area}">
       <div class="park-card-top" style="background:${p.color};"></div>
       <div class="park-body">
@@ -1020,32 +998,8 @@ function render(){
         <div class="park-badges">${p.tags.map(t=>`<span class="pbadge" style="${badgeStyle(t)}">${(tagEmoji[t]||'')} ${t}${(p.tagNotes&&p.tagNotes[t])?` <span style="opacity:0.75;font-weight:700;">(${p.tagNotes[t]})</span>`:''}</span>`).join('')}</div>
         <span class="explore-btn" style="margin-top:14px;">→ Explore this park</span>
       </div>
-    </a>`;
-      i++;
-    });
-  });
-
-  // Any neighborhoods not in hoodOrder
-  Object.keys(groups).forEach(hood => {
-    if (hoodOrder.includes(hood)) return;
-    html += `<div class="hood-header">📍 ${hood}</div>`;
-    groups[hood].forEach(p => {
-      html += `
-    <a class="park-card" href="${p.id}.html" style="animation-delay:${i*0.07}s" aria-label="${p.name} — ${p.area}">
-      <div class="park-card-top" style="background:${p.color};"></div>
-      <div class="park-body">
-        <div class="park-name">${p.name}</div>
-        <div class="park-area">📍 ${p.area}</div>
-        <p style="font-size:13px;color:#555;font-weight:600;line-height:1.5;margin:8px 0 12px;">${p.desc}</p>
-        <div class="park-badges">${p.tags.map(t=>`<span class="pbadge" style="${badgeStyle(t)}">${(tagEmoji[t]||'')} ${t}${(p.tagNotes&&p.tagNotes[t])?` <span style="opacity:0.75;font-weight:700;">(${p.tagNotes[t]})</span>`:''}</span>`).join('')}</div>
-        <span class="explore-btn" style="margin-top:14px;">→ Explore this park</span>
-      </div>
-    </a>`;
-      i++;
-    });
-  });
-
-  grid.innerHTML = html;
+    </a>
+  `).join('');
 }
 
 document.querySelectorAll('.fchip').forEach(c=>{
