@@ -49,7 +49,7 @@ body {
 .a11y-option{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:2px dashed #eee;gap:12px;}
 .a11y-option:last-child{border-bottom:none;}
 .a11y-option-text label{display:block;font-size:13px;font-weight:800;color:var(--dark);}
-.a11y-option-text p{font-size:11px;color:#777;margin-top:1px;}
+.a11y-option-text p{font-size:11px;color:#636363;margin-top:1px;}
 .a11y-toggle{position:relative;width:42px;height:23px;flex-shrink:0;}
 .a11y-toggle input{opacity:0;width:0;height:0;}
 .a11y-toggle-slider{position:absolute;inset:0;background:#ccc;border-radius:23px;border:2px solid var(--dark);cursor:pointer;transition:background 0.2s;}
@@ -57,7 +57,7 @@ body {
 .a11y-toggle input:checked + .a11y-toggle-slider{background:var(--green);}
 .a11y-toggle input:checked + .a11y-toggle-slider::before{transform:translateX(19px);}
 html.high-contrast body{filter:contrast(1.35);}
-html.large-text body{font-size:118%;}
+html.large-text body{zoom:1.15;-moz-transform:scale(1.15);-moz-transform-origin:top left;}
 html.reduce-motion *{animation:none!important;transition:none!important;}
 .rainbow-bar {
   height: 7px;
@@ -402,7 +402,7 @@ nav {
   flex-wrap: wrap;
 }
 .filter-summary .summary-label {
-  color: #888;
+  color: #636363;
   font-weight: 700;
 }
 .filter-summary .summary-tag {
@@ -470,7 +470,7 @@ nav {
 .park-area {
   font-size: 12px;
   font-weight: 700;
-  color: #888;
+  color: #636363;
   margin-bottom: 8px;
 }
 .park-badges {
@@ -513,7 +513,7 @@ nav {
 .no-results {
   text-align: center;
   padding: 3rem;
-  color: #888;
+  color: #636363;
   font-weight: 700;
   font-size: 15px;
   display: none;
@@ -617,7 +617,7 @@ footer {
 .footer-tagline {
   font-size: 13px;
   font-weight: 700;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.7);
   margin-bottom: 1rem;
 }
 .footer-links {
@@ -643,7 +643,7 @@ footer {
 }
 .footer-copy {
   font-size: 11px;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.55);
   font-weight: 700;
 }
 
@@ -675,7 +675,7 @@ footer {
 .hood-subtitle {
   font-size: 12px;
   font-weight: 700;
-  color: #888;
+  color: #636363;
   font-family: 'Nunito', sans-serif;
   margin-left: 4px;
 }
